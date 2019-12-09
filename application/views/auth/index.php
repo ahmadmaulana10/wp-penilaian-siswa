@@ -18,7 +18,7 @@
                                    </div>
                                    <div class="login-checkbox">
                                         <label>
-                                             <a href="<?= base_url('assets/') ?>#">Lupa Password ?</a>
+                                             <a href="<?= base_url('auth/lupaPassword') ?>#">Lupa Password ?</a>
                                         </label>
                                    </div>
                                    <button class="au-btn au-btn--block au-btn--green m-t-5" type="submit">Login</button>
