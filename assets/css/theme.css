@@ -276,7 +276,6 @@ section {
 .page-wrapper {
     overflow: hidden;
     background: #e5e5e5;
-    padding-bottom: 8vh;
 }
 
 @media (max-width: 991px) {
@@ -337,7 +336,7 @@ section {
 }
 
 .login-wrap {
-    max-width: 540px;
+    max-width: 400px;
     padding-top: 8vh;
     margin: 0 auto;
 }
@@ -366,6 +365,7 @@ section {
 
 .login-checkbox > label > a {
     color: #ff2e44;
+    font-size: small;
 }
 
 @media (max-width: 991px) {
@@ -715,7 +715,7 @@ section {
     line-height: 43px;
     border: 1px solid #e5e5e5;
     font-size: 14px;
-    color: #666;
+    color: black;
     padding: 0 17px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
