@@ -1,0 +1,27 @@
+1) Cari file sendmail.ini (di folder xampp/sendmail) dan dicopy dulu buat backup.
+
+2) Buka file sendmail.ini dan diedit sbb:
+
+smtp_server=smtp.gmail.com
+smtp_port=587
+smtp_ssl=tls
+auth_username= suryai12180308@bsi.ac.id
+auth_password= 1999-05-01
+force_sender= suryai12180308@bsi.ac.id
+
+3) Cari file php.ini (di folder xampp/php) dan dicopy dulu buat backup.
+
+4) Buka file php.ini dan cari [mail function] lalu edit:
+
+(Tambahkan ;)
+
+;SMTP=localhost
+ 
+;smtp_port=25
+sendmail_path = C:\xampp\sendmail\sendmail.exe (klo beda disesuaikan lokasinya)
+
+Cari php_openssl dan pastikan enable (Hapus ;)
+
+extension=php_openssl.dll
+
+6) Restart xampp
