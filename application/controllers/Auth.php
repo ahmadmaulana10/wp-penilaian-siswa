@@ -54,8 +54,12 @@ class Auth extends CI_Controller
                          //Cek jika dia admin atau user
                          if ($user['role_id'] == 1) {
                               redirect('admin');
-                         } else {
+                         } elseif ($user['role_id'] == 2) {
                               redirect('user');
+                         } elseif ($user['role_id'] == 3) {
+                              redirect('kepsek');
+                         } else {
+                              $this->load->view('user/blok');
                          }
                     } else {
                          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');

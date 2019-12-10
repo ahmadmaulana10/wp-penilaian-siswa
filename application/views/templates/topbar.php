@@ -22,7 +22,7 @@
                                                   <div class="image">
                                                        <a href="<?= base_url('assets/'); ?>#">
                                                             <img src="" alt="">
-                                                            <img src="<?= base_url('assets/img/profile/') . $user['gambar']; ?>" alt="John Doe" />
+                                                            <img src="<?= base_url('assets/img/profile/') . $user['gambar']; ?>" />
                                                        </a>
                                                   </div>
 
@@ -31,18 +31,18 @@
                                                        <h5 class="name">
                                                             <a href=""><?= ucwords($user['nama']); ?></a>
                                                        </h5>
-                                                       <span class="email"><?= ucwords($user['email']); ?></span>
+                                                       <span class="email"><?= $user['email']; ?></span>
                                                   </div>
                                              </div>
                                              <div class="account-dropdown__body">
                                                   <div class="account-dropdown__item">
-                                                       <a href="#">
-                                                            <i class="zmdi zmdi-account"></i>Account</a>
+                                                       <a href="<?= base_url('user'); ?>">
+                                                            <i class="fas fa-fw fa-user"></i>Account</a>
                                                   </div>
                                              </div>
                                              <div class="account-dropdown__footer">
-                                                  <a href="<?= base_url('auth/logout'); ?>#">
-                                                       <i class="zmdi zmdi-power"></i>Logout</a>
+                                                  <a href="<?= base_url('auth/logout'); ?>" onclick="return confirm('Yakin ingin logout?'); ">
+                                                       <i class="fas fa-fw fa-sign-out-alt"></i>Logout</a>
                                              </div>
                                         </div>
                                    </div>
