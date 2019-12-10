@@ -10,8 +10,8 @@
                          <div class="header-button">
                               <div class="account-wrap">
                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                        <div class="image rounded-circle">
+                                             <img src="<?= base_url('assets/img/profile/') . $user['gambar']; ?>" alt="John Doe" />
                                         </div>
                                         <!-- Nama di topbar -->
                                         <div class="content">
@@ -22,21 +22,21 @@
                                                   <div class="image">
                                                        <a href="<?= base_url('assets/'); ?>#">
                                                             <img src="" alt="">
-                                                            <!-- <img src="<?= base_url('assets/img/profile/') . $user['gambar']; ?>" alt="John Doe" /> -->
+                                                            <img src="<?= base_url('assets/img/profile/') . $user['gambar']; ?>" alt="John Doe" />
                                                        </a>
                                                   </div>
 
                                                   <!-- Detail setelah di klik -->
                                                   <div class="content">
                                                        <h5 class="name">
-                                                            <a href="<?= base_url('assets/'); ?>#">john doe</a>
+                                                            <a href=""><?= ucwords($user['nama']); ?></a>
                                                        </h5>
-                                                       <span class="email">johndoe@example.com</span>
+                                                       <span class="email"><?= ucwords($user['email']); ?></span>
                                                   </div>
                                              </div>
                                              <div class="account-dropdown__body">
                                                   <div class="account-dropdown__item">
-                                                       <a href="<?= base_url('assets/'); ?>#">
+                                                       <a href="#">
                                                             <i class="zmdi zmdi-account"></i>Account</a>
                                                   </div>
                                              </div>

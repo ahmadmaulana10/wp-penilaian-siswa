@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class User extends CI_Controller
 {
      public function index()
      {
-          $data['title'] = "Admin";
-          $data['user']  = $this->ModelAdmin->getTopbarName();
+          $data['title'] = "User";
+          $data['user']  = $this->ModelUser->getTopbarName();
 
           $this->load->view('templates/header', $data);
-          $this->load->view('templates/topbar');
+          $this->load->view('templates/topbar', $data);
           $this->load->view('templates/sidebar');
-          $this->load->view('admin/index');
+          $this->load->view('user/index', $data);
           $this->load->view('templates/footer');
      }
 }

@@ -6,15 +6,18 @@
                          <div class="login-logo">
                               <h3>Login</h3>
                          </div>
+                         <?= $this->session->flashdata('message'); ?>
                          <div class="login-form">
                               <form action="" method="post">
                                    <div class="form-group">
                                         <label>Email</label>
-                                        <input class="au-input au-input--full" type="email" name="email" placeholder="ex :   John@gmail.com" autocomplete="off">
+                                        <input class="au-input au-input--full" type="email" name="email" value="<?= set_value('email'); ?>" placeholder="ex :   John@gmail.com" autocomplete="off">
+                                        <?= form_error('email', '<small class="text-danger pl-4">', '</small>'); ?>
                                    </div>
                                    <div class="form-group">
                                         <label>Password</label>
                                         <input class="au-input au-input--full" type="password" name="password" placeholder="Ketik Password Disini . . .">
+                                        <?= form_error('password', '<small class="text-danger pl-4">', '</small>'); ?>
                                    </div>
                                    <div class="login-checkbox">
                                         <label>
