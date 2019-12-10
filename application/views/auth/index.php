@@ -14,7 +14,7 @@
                                              <div class="input-group-addon">
                                                   <i class="fa fa-envelope"></i>
                                              </div>
-                                             <input class="form-control" type="text" name="email" value="<?= set_value('email'); ?>" placeholder="ex :   Jamal@gmail.com" autocomplete="off">
+                                             <input class="form-control" type="text" name="email" value="<?= set_value('email'); ?>" placeholder="ex :   Jamal@gmail.com">
                                         </div>
                                         <?= form_error('email', '<small class="text-danger pl-4">', '</small>'); ?>
                                    </div>
