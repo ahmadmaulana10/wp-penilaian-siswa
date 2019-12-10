@@ -6,7 +6,7 @@
                <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
                <div class="row">
-                    <div class="col-lg-9">
+                    <div class="col-lg-11">
                          <?= form_open_multipart('user/ubahprofile'); ?>
                          <div class="form-group row">
                               <label for="email" class="col-sm-2 col-form-label">Email</label>

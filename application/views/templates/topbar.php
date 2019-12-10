@@ -36,8 +36,8 @@
                                              </div>
                                              <div class="account-dropdown__body">
                                                   <div class="account-dropdown__item">
-                                                       <a href="<?= base_url('user'); ?>">
-                                                            <i class="fas fa-fw fa-user"></i>Account</a>
+                                                       <a href="<?= base_url('admin/ubah_profil'); ?>">
+                                                            <i class="fas fa-fw fa-user"></i>Ubah Profil</a>
                                                   </div>
                                              </div>
                                              <div class="account-dropdown__footer">

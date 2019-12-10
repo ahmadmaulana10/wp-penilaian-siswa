@@ -2,7 +2,7 @@
 <div class="row">
      <div class="col-md-12">
           <div class="copyright">
-               <p>Copyright © <?= date('Y'); ?> .</p>
+               <p>Copyright © Web Penilaian Siswa <?= date('Y'); ?>.</p>
           </div>
      </div>
 </div>

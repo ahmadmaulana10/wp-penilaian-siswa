@@ -4265,7 +4265,8 @@ section {
 }
 
 .table-earning tbody tr:hover td {
-    color: #555;
+    color: #43474e;
+    background: #f2f7fa;
     cursor: pointer;
 }
 
@@ -4722,7 +4723,7 @@ section {
 }
 
 .table-data3 tbody td {
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid gray;
     background: #fff;
     font-size: 14px;
     color: #808080;

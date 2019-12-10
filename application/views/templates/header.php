@@ -32,6 +32,7 @@
 
      <!-- Main CSS-->
      <link href="<?= base_url('assets/'); ?>css/theme.css" rel="stylesheet" media="all">
+     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet" media="all">
 
 </head>
 
