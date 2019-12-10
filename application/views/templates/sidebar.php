@@ -12,8 +12,12 @@
                <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                          <li>
-                              <a href="#">
+                              <a href="<?= base_url('admin') ?>">
                                    <i class="fas fa-fw fa-home"></i>Dashboard</a>
+                         </li>
+                         <li>
+                              <a href="<?= base_url('user/ubahProfile'); ?>">
+                                   <i class="fas fa-fw fa-user"></i>Ubah Profile</a>
                          </li>
                          <li>
                               <a href="#" data-toggle="modal" data-target="#logoutModal">

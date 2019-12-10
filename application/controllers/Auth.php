@@ -62,15 +62,36 @@ class Auth extends CI_Controller
                               $this->load->view('user/blok');
                          }
                     } else {
-                         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+                         $this->session->set_flashdata(
+                              'message',
+                              '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                   </button>Password salah!
+                              </div>'
+                         );
                          redirect('auth');
                     }
                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum aktif!</div>');
+                    $this->session->set_flashdata(
+                         'message',
+                         '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                              </button>Email belum aktif!
+                         </div>'
+                    );
                     redirect('auth');
                }
           } else {
-               $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email tidak terdaftar!</div>');
+               $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                         </button>Email tidak terdaftar!
+                    </div>'
+               );
                redirect('auth');
           }
      }
@@ -130,7 +151,14 @@ class Auth extends CI_Controller
 
                $this->_sendemail($token, 'verifikasi');
 
-               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil daftar akun. Silahkan aktivasi akun anda!</div>');
+               $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                         </button>Berhasil daftar akun. Silahkan aktivasi akun anda!
+                    </div>'
+               );
                redirect('auth');
           }
      }
@@ -206,21 +234,49 @@ class Auth extends CI_Controller
                          $this->db->update('user');
                          $this->db->delete('user_token', ['email' => $email]);
 
-                         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">' . $email . ' Telah berhasil di aktivasi. Silahkan login!</div>');
+                         $this->session->set_flashdata(
+                              'message',
+                              '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                   </button>' . $email . ' Telah berhasil di aktivasi. Silahkan login!
+                              </div>'
+                         );
                          redirect('auth');
                     } else {
                          $this->db->delete('user', ['email' => $email]);
                          $this->db->delete('user_token', ['email' => $email]);
 
-                         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Token tidak berlaku!</div>');
+                         $this->session->set_flashdata(
+                              'message',
+                              '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                   </button>Token tidak berlaku!
+                              </div>'
+                         );
                          redirect('auth');
                     }
                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Token salah!</div>');
+                    $this->session->set_flashdata(
+                         'message',
+                         '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                              </button>Token salah!
+                         </div>'
+                    );
                     redirect('auth');
                }
           } else {
-               $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Aktifasi akun gagal!</div>');
+               $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                         </button>Aktifasi akun gagal!
+                    </div>'
+               );
                redirect('auth');
           }
      }
@@ -253,10 +309,24 @@ class Auth extends CI_Controller
                     $this->db->insert('user_token', $user_token);
                     $this->_sendemail($token, 'lupa');
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Silahkan cek email anda!</div>');
+                    $this->session->set_flashdata(
+                         'message',
+                         '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                              </button>Silahkan cek email anda!
+                         </div>'
+                    );
                     redirect('auth/lupaPassword');
                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum terdaftar atau diaktivasi!</div>');
+                    $this->session->set_flashdata(
+                         'message',
+                         '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                              </button>Email belum terdaftar atau diaktivasi!
+                         </div>'
+                    );
                     redirect('auth/lupaPassword');
                }
           }
@@ -277,11 +347,25 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('reset_email', $email);
                     $this->ubahPassword();
                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Token salah!</div>');
+                    $this->session->set_flashdata(
+                         'message',
+                         '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                              </button>Token salah!
+                         </div>'
+                    );
                     redirect('auth');
                }
           } else {
-               $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Reset password gagal! Email salah!</div>');
+               $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                         </button>Reset password gagal! Email salah!
+                    </div>'
+               );
                redirect('auth');
           }
      }
@@ -319,7 +403,14 @@ class Auth extends CI_Controller
 
                $this->session->unset_userdata('reset_email');
 
-               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah! Silahkan login!</div>');
+               $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                         </button>Password berhasil diubah! Silahkan login!
+                    </div>'
+               );
                redirect('auth');
           }
      }
@@ -329,7 +420,14 @@ class Auth extends CI_Controller
           $this->session->unset_userdata('email');
           $this->session->unset_userdata('role_id');
 
-          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil logout!</div>');
+          $this->session->set_flashdata(
+               'message',
+               '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                    </button>Berhasil logout!
+               </div>'
+          );
           redirect('auth');
      }
 
