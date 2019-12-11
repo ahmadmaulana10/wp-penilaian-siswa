@@ -1,6 +1,8 @@
 <div class="main-content">
     <div class="section__content section__content">
         <div class="container-fluid">
+            <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+            <?= $this->session->flashdata('pesan'); ?>
             <div class="row">
                 <div class="col-lg-12">
                     <!-- DATA TABLE-->
@@ -52,7 +54,7 @@
                                                 <a href="<?= base_url('admin/ubah_user/') . $users['id']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Ubah">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
-                                                <a href="<?= base_url('admin/hapus/') . $users['id']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                                <a href="<?= base_url('admin/hapus_user/') . $users['id']; ?>" onclick="return confirm('Pilih OK jika ingin hapus user.'); " class="item" data-toggle="tooltip" data-placement="top" title="Hapus">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </a>
                                             </div>

@@ -56,7 +56,7 @@
                                                   </div>
                                              </div>
                                              <div class="account-dropdown__footer">
-                                                  <a href="<?= base_url('auth/logout'); ?>" onclick="return confirm('Yakin ingin logout?'); ">
+                                                  <a href="<?= base_url('auth/logout'); ?>" onclick="return confirm('Pilih OK jika ingin keluar dari aplikasi.'); ">
                                                        <i class="fas fa-fw fa-sign-out-alt"></i>Logout</a>
                                              </div>
                                         </div>

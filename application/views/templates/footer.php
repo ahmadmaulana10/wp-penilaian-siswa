@@ -60,6 +60,14 @@
 <!-- Main JS-->
 <script src="<?= base_url('assets/') ?>js/main.js"></script>
 
+<script>
+     // Agar cari gambar bisa menampilkan url direktori
+     $('.custom-file-input').on('change', function() {
+          let fileName = $(this).val().split('\\').pop();
+          $(this).next('.custom-file-label').addClass("selected").html(fileName);
+     });
+</script>
+
 </body>
 
 </html>
