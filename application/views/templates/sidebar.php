@@ -20,7 +20,7 @@
           <nav class="navbar-mobile">
                <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                    <li>
+                         <li>
                               <a href="<?= base_url('admin') ?>">
                                    <i class="fas fa-fw fa-home"></i>Dashboard</a>
                          </li>
@@ -32,7 +32,7 @@
                                    <i class="fas fa-fw fa-users"></i>Data User</a>
                          </li>
                          <li>
-                              <a href="<?= base_url('user/ubahPassword'); ?>">
+                              <a href="<?= base_url('admin/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>
                          </li>
 
@@ -84,7 +84,7 @@
                                    <i class="fas fa-fw fa-users"></i>Data User</a>
                          </li>
                          <li>
-                              <a href="<?= base_url('user/ubahPassword'); ?>">
+                              <a href="<?= base_url('admin/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>
                          </li>
 

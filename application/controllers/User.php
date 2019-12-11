@@ -11,6 +11,7 @@ class User extends CI_Controller
 
      public function index()
      {
+          is_login();
           $data['title'] = "User";
           $data['user']  = $this->ModelUser->getTopbarName();
 

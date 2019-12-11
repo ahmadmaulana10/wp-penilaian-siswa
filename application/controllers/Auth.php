@@ -5,8 +5,18 @@ class Auth extends CI_Controller
 {
      public function index()
      {
+          //validasi session agar login sesuai dengan hak akses
           if ($this->session->userdata('email')) {
-               redirect('user');
+               $email = $this->session->userdata('email');
+               //mengambil role_id
+               $role_id = $this->ModelUser->getUserByEmail($email)['role_id'];
+               if ($role_id === "1") {
+                    redirect('admin');
+               } elseif ($role_id === "2") {
+                    redirect('user');
+               } elseif ($role_id === "3") {
+                    redirect('kepsek');
+               }
           }
 
           $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
