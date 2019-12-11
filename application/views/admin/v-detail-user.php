@@ -41,7 +41,7 @@
                             <tr>
                                 <td>Gambar</td>
                                 <td>
-                                    <img src="<?= base_url('assets/img/profile/') . $user['gambar']; ?>" class="img-thumbnail" alt="">
+                                    <img src="<?= base_url('assets/img/profile/') . $user['gambar']; ?>" class="img-thumbnail">
                                 </td>
                             </tr>
                         </tbody>
