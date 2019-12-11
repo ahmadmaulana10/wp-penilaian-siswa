@@ -44,7 +44,7 @@
                                         <td><img src="<?= base_url('assets/img/profile/') ?><?= $users['gambar']; ?>" class="gambar rounded"></td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <a href="<?= base_url('admin/detail/') . $users['id']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
+                                                <a href="<?= base_url('admin/detail_user/') . $users['id']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
                                                     <i class="zmdi zmdi-more"></i>
                                                 </a>
                                                 <a href="<?= base_url('admin/ubah_user/') . $users['id']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Ubah">
