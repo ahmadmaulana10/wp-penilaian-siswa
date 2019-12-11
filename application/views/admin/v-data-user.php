@@ -21,7 +21,7 @@
                                 ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $users['nama']; ?></td>
+                                        <td><?= ucwords($users['nama']); ?></td>
                                         <td><?= $users['email']; ?></td>
                                         <td>
                                             <?php if ($users['role_id'] == 1) {

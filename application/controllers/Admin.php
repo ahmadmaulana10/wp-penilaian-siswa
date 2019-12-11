@@ -46,16 +46,17 @@ class Admin extends CI_Controller
           $this->load->view('admin/v-data-user', $user);
           $this->load->view('templates/footer');
      }
-     public function detail_user()
+
+     public function detail_user($id)
      {
           $data['title'] = "Detail User";
           $data['user']  = $this->ModelAdmin->getTopbarName();
-          $detail['user']  = $this->ModelUser->getUser();
+          $data['user']  = $this->ModelUser->getUserById($id);
 
           $this->load->view('templates/header', $data);
           $this->load->view('templates/sidebar');
           $this->load->view('templates/topbar');
-          $this->load->view('admin/v-detail-user', $detail);
+          $this->load->view('admin/v-detail-user', $data);
           $this->load->view('templates/footer');
      }
 }
