@@ -2,19 +2,9 @@
 function is_login()
 {
      $ci = get_instance();
-     // $email = $this->db->get_where('email', ['email']);
-     // $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
      if (!$ci->session->userdata('email')) {
-          // if ($user['role_id'] == 1) {
-          //      redirect('admin');
-          // } elseif ($user['role_id'] == 2) {
-          //      redirect('user');
-          // } elseif ($user['role_id'] == 3) {
-          //      redirect('kepsek');
-          // } else {
-          //      redirect('user/blok');
-          // }
+          redirect('auth');
      } else {
           $role_id = $ci->session->userdata('role_id');
           $menu = $ci->uri->segment(1);
