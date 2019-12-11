@@ -4244,8 +4244,12 @@ section {
     font-weight: 400;
     text-transform: capitalize;
     line-height: 1;
-    padding: 22px 40px;
+    padding: 8px;
     white-space: nowrap;
+}
+
+.table-earning thead td:last-child {
+    padding-right: 40px;
 }
 
 .table-earning thead th.text-right {
@@ -4255,7 +4259,8 @@ section {
 
 .table-earning tbody td {
     color: #808080;
-    padding: 12px 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     white-space: nowrap;
 }
 
@@ -4267,7 +4272,6 @@ section {
 .table-earning tbody tr:hover td {
     color: #43474e;
     background: #f2f7fa;
-    cursor: pointer;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -4630,12 +4634,13 @@ section {
     -moz-border-radius: 100%;
     border-radius: 100%;
     background: #e5e5e5;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .table-data-feature .item:last-child {
     margin-right: 0;
 }
+
 
 .table-data-feature .item i {
     font-size: 20px;
@@ -4679,15 +4684,15 @@ section {
     color: #fff;
     font-weight: 400;
     text-transform: capitalize;
-    padding: 18px 40px;
-    padding-right: 10px;
+    /* padding: 18px 40px;
+    padding-right: 10px; */
 }
 
-.table-data3 thead tr th:first-child {
+/* .table-data3 thead tr th:first-child {
     -webkit-border-top-left-radius: 3px;
     -moz-border-radius-topleft: 3px;
     border-top-left-radius: 3px;
-}
+} */
 
 .table-data3 thead tr th:last-child {
     -webkit-border-top-right-radius: 3px;
@@ -4696,13 +4701,12 @@ section {
 }
 
 .table-data3 thead tr th:last-child {
-    text-align: right;
-    padding-right: 50px;
+    text-align: center;
 }
 
 .table-data3 tbody tr td:last-child {
-    text-align: right;
-    padding-right: 50px;
+    text-align: center;
+    padding-right: 3.5%;
 }
 
 .table-data3 tbody tr {
@@ -4710,25 +4714,25 @@ section {
     border-right: 1px solid #e5e5e5;
 }
 
-.table-data3 tbody tr:last-child td:first-child {
+/* .table-data3 tbody tr:last-child td:first-child {
     -webkit-border-bottom-left-radius: 8px;
     -moz-border-radius-bottomleft: 8px;
     border-bottom-left-radius: 8px;
-}
+} */
 
-.table-data3 tbody tr:last-child td:last-child {
+/* .table-data3 tbody tr:last-child td:last-child {
     -webkit-border-bottom-right-radius: 8px;
     -moz-border-radius-bottomright: 8px;
     border-bottom-right-radius: 8px;
-}
+} */
 
 .table-data3 tbody td {
     border-bottom: 1px solid gray;
     background: #fff;
     font-size: 14px;
     color: #808080;
-    padding: 12px 40px;
-    padding-right: 10px;
+    /* padding: 12px 40px;
+    padding-right: 10px; */
 }
 
 .table-data3 tbody td.process {

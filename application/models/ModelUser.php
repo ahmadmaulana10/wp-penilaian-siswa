@@ -13,6 +13,16 @@ class ModelUser extends CI_Model
           return $this->db->get('user')->result_array();
      }
 
+     public function getUsers($limit, $start)
+     {
+          return $this->db->get('user', $limit, $start)->result_array();
+     }
+
+     public function totalRows()
+     {
+          return $this->db->get('user')->num_rows();
+     }
+
      public function getUserById($id)
      {
           return $this->db->get_where('user', ['id' => $id])->row_array();

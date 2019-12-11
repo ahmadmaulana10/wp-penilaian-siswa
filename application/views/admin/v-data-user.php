@@ -8,11 +8,12 @@
                         <table class="table table-bordered table-data3">
                             <thead>
                                 <tr>
+                                    <th class="text-center">No</th>
                                     <th>nama</th>
                                     <th>email</th>
-                                    <th>Level</th>
-                                    <th>status</th>
-                                    <th>gambar</th>
+                                    <th class="text-center">Level</th>
+                                    <th class="text-center">status</th>
+                                    <th class="text-center">gambar</th>
                                     <th class="text-center">aksi</th>
                                 </tr>
                             </thead>
@@ -21,9 +22,10 @@
                                 ?>
                                 <tbody>
                                     <tr>
+                                        <td align="center"><?= ++$start; ?></td>
                                         <td><?= ucwords($users['nama']); ?></td>
                                         <td><?= $users['email']; ?></td>
-                                        <td>
+                                        <td align="center">
                                             <?php if ($users['role_id'] == 1) {
                                                     echo "<span class='role admin'>admin</span>";
                                                 } elseif ($users['role_id'] == 2) {
@@ -33,7 +35,7 @@
                                                 }
                                                 ?>
                                         </td>
-                                        <td>
+                                        <td align="center">
                                             <?php if ($users['is_active'] == 1) {
                                                     echo "<span class='status--process'>Aktif</span>";
                                                 } elseif ($users['is_active'] == 0) {
@@ -41,7 +43,7 @@
                                                 }
                                                 ?>
                                         </td>
-                                        <td><img src="<?= base_url('assets/img/profile/') ?><?= $users['gambar']; ?>" class="gambar rounded"></td>
+                                        <td align="center"><img src="<?= base_url('assets/img/profile/') ?><?= $users['gambar']; ?>" class="gambar rounded"></td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a href="<?= base_url('admin/detail_user/') . $users['id']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
@@ -60,7 +62,8 @@
                                 endforeach
                                 ?>
                                 </tbody>
-                        </table>
+                        </table><br>
+                        <?= $this->pagination->create_links(); ?>
                     </div>
                     <!-- END DATA TABLE-->
                 </div>
