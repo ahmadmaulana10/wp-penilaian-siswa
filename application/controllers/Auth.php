@@ -3,9 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-     public function index()
+
+     public function __construct()
      {
-          //validasi session agar login sesuai dengan hak akses
+          parent::__construct();
           if ($this->session->userdata('email')) {
                $email = $this->session->userdata('email');
                //mengambil role_id
@@ -18,6 +19,10 @@ class Auth extends CI_Controller
                     redirect('kepsek');
                }
           }
+     }
+
+     public function index()
+     {
 
           $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
                'required' => 'Email harus diisi!',

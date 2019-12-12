@@ -6,7 +6,16 @@ class User extends CI_Controller
      public function __construct()
      {
           parent::__construct();
-          is_login();
+          if ($this->session->userdata('email')) {
+               $email = $this->session->userdata('email');
+               //mengambil role_id
+               $role_id = $this->ModelUser->getUserByEmail($email)['role_id'];
+               if ($role_id === "1") {
+                    redirect('admin');
+               } elseif ($role_id === "3") {
+                    redirect('kepsek');
+               }
+          }
      }
 
      public function index()

@@ -6,11 +6,21 @@ class Admin extends CI_Controller
      public function __construct()
      {
           parent::__construct();
-          is_login();
+          if ($this->session->userdata('email')) {
+               $email = $this->session->userdata('email');
+               //mengambil role_id
+               $role_id = $this->ModelUser->getUserByEmail($email)['role_id'];
+               if ($role_id === "2") {
+                    redirect('user');
+               } elseif ($role_id === "3") {
+                    redirect('kepsek');
+               }
+          }
      }
 
      public function index()
      {
+
           $data['title'] = "Admin";
           $data['user']  = $this->ModelAdmin->getTopbarName();
 
@@ -145,7 +155,7 @@ class Admin extends CI_Controller
 
           $config['base_url'] = base_url() . 'admin/data_user';
           $config['total_rows'] = $this->ModelUser->totalRows();
-          $config['per_page'] = 2;
+          $config['per_page'] = 10;
 
           //styling pagination dengan bootstrap
           $config['full_tag_open'] = '<nav><ul class="pagination">';
