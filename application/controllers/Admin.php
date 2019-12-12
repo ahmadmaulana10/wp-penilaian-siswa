@@ -15,7 +15,7 @@ class Admin extends CI_Controller
           $data['user']  = $this->ModelAdmin->getTopbarName();
 
           $this->load->view('templates/header', $data);
-          $this->load->view('templates/sidebar');
+          $this->load->view('templates/admin_sidebar');
           $this->load->view('templates/topbar');
           $this->load->view('admin/index');
           $this->load->view('templates/footer');
@@ -33,7 +33,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar');
+               $this->load->view('templates/admin_sidebar');
                $this->load->view('templates/topbar');
                $this->load->view('admin/ubah-profil', $data);
                $this->load->view('templates/footer');
@@ -95,7 +95,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/admin_sidebar', $data);
                $this->load->view('templates/topbar', $data);
                $this->load->view('admin/ubah-password-admin', $data);
                $this->load->view('templates/footer');
@@ -123,6 +123,18 @@ class Admin extends CI_Controller
                     }
                }
           }
+     }
+
+     public function ubah_user()
+     {
+          $data['title'] = 'Ubah Data User';
+          $data['user']  = $this->ModelAdmin->getTopbarName();
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/admin_sidebar', $data);
+          $this->load->view('templates/topbar', $data);
+          $this->load->view('admin/v-ubah-profil', $data);
+          $this->load->view('templates/footer');
      }
 
      public function data_user()
@@ -168,7 +180,7 @@ class Admin extends CI_Controller
           $data['start'] = $this->uri->segment(3);
           $user['user']  = $this->ModelUser->getUsers($config['per_page'], $data['start']);
           $this->load->view('templates/header', $data);
-          $this->load->view('templates/sidebar');
+          $this->load->view('templates/admin_sidebar');
           $this->load->view('templates/topbar');
           $this->load->view('admin/v-data-user', $user);
           $this->load->view('templates/footer');
@@ -181,7 +193,7 @@ class Admin extends CI_Controller
           $detail['user']  = $this->ModelUser->getUserById($id);
 
           $this->load->view('templates/header', $data);
-          $this->load->view('templates/sidebar');
+          $this->load->view('templates/admin_sidebar');
           $this->load->view('templates/topbar');
           $this->load->view('admin/v-detail-user', $detail);
           $this->load->view('templates/footer');

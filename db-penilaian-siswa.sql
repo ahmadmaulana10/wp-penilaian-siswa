@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2019 at 11:17 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.1.32
+-- Generation Time: Dec 12, 2019 at 10:25 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -155,7 +155,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama`, `email`, `gambar`, `password`, `role_id`, `is_active`, `tanggal_buat`) VALUES
-(6, 'admin', 'admin@admin.com', 'default.jpg', '$2y$10$Emh.fQcmvKyDK1Oz4SLYR./hdgnIo04WwJgXCeXZWSfmAWMUl7LX6', 1, 1, 1575686859);
+(6, 'surya intan permana', 'admin@admin.com', 'pro1576102509.jpg', '$2y$10$7PJqiyR4CcwGPT7AYcq4i.iPGG5l6.TJdNKft7zFvyp69KSMkDDpW', 1, 1, 1575686859),
+(11, 'ahmad maulana', 'ahmadmaulana@gmail.com', 'default.jpg', '$2y$10$jEzz1uXE1tTcGEtvsBglAuhjae0kpaCKN9y7kHFMg02sPXzdQ4Poi', 2, 1, 1576105567),
+(12, 'eka wardana', 'ekawardana@gmail.com', 'default.jpg', '$2y$10$1ZH/hcl3i99v3iqraDIOdeHTacBm4tWbtxIExycFdkmNkz8WC7Fv6', 3, 1, 1576105603);
 
 -- --------------------------------------------------------
 
@@ -216,7 +218,8 @@ CREATE TABLE `user_role` (
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
 (1, 'Admin'),
-(2, 'User');
+(2, 'User'),
+(3, 'Kepsek');
 
 -- --------------------------------------------------------
 
@@ -236,7 +239,11 @@ CREATE TABLE `user_token` (
 --
 
 INSERT INTO `user_token` (`id`, `email`, `token`, `tanggal_buat`) VALUES
-(1, 'suryha7fold@gmail.com', 'XHm39CrkiXlqm+FgKxQ+ntzm1qqY0WDtXBXTrHORRWs=', 1575934797);
+(1, 'suryha7fold@gmail.com', 'XHm39CrkiXlqm+FgKxQ+ntzm1qqY0WDtXBXTrHORRWs=', 1575934797),
+(2, 'suryha7fold@gmail.com', 'Eo0AAZSe2596MBEv1bZTweuvXoP5844g8lIpkCMmeVM=', 1575979574),
+(3, 'suryha7fold@gmail.com', 'yOPaisavxFO0r2jHGCsljR6sb0qK6OaIT/n6u6OQLX0=', 1576101793),
+(4, 'ahmadmaulana@gmail.com', '+Qh8+8gNL0eRXnvp2VIlGWRFoB+eHzsMSm6CGLkXo+A=', 1576105567),
+(5, 'ekawardana@gmail.com', 'gvmsNX1ow45RRzaVmlGAsGdSDzZYi71qClqTChd2nXE=', 1576105603);
 
 --
 -- Indexes for dumped tables
@@ -311,19 +318,19 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
