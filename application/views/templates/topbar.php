@@ -15,15 +15,15 @@
                          <div class="header-button">
                               <div class="noti-wrap">
                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-comment-more"></i>
+                                        <!-- <i class="zmdi zmdi-comment-more"></i> -->
                                         <!-- <span class="quantity">1</span> -->
                                    </div>
                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
+                                        <!-- <i class="zmdi zmdi-email"></i> -->
                                         <!-- <span class="quantity">1</span> -->
                                    </div>
                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
+                                        <!-- <i class="zmdi zmdi-notifications"></i> -->
                                         <!-- <span class="quantity"></span> -->
                                    </div>
                               </div>

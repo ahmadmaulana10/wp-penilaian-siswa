@@ -6,16 +6,28 @@ class Admin extends CI_Controller
      public function __construct()
      {
           parent::__construct();
-          is_login();
+          if ($this->session->userdata('email')) {
+               $email = $this->session->userdata('email');
+               //mengambil role_id
+               $role_id = $this->ModelUser->getUserByEmail($email)['role_id'];
+               if ($role_id === "2") {
+                    redirect('user');
+               } elseif ($role_id === "3") {
+                    redirect('kepsek');
+               }
+          } else {
+               redirect('auth');
+          }
      }
 
      public function index()
      {
+
           $data['title'] = "Admin";
           $data['user']  = $this->ModelAdmin->getTopbarName();
 
           $this->load->view('templates/header', $data);
-          $this->load->view('templates/sidebar');
+          $this->load->view('templates/admin_sidebar');
           $this->load->view('templates/topbar');
           $this->load->view('admin/index');
           $this->load->view('templates/footer');
@@ -33,7 +45,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar');
+               $this->load->view('templates/admin_sidebar');
                $this->load->view('templates/topbar');
                $this->load->view('admin/ubah-profil', $data);
                $this->load->view('templates/footer');
@@ -95,7 +107,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/admin_sidebar', $data);
                $this->load->view('templates/topbar', $data);
                $this->load->view('admin/ubah-password-admin', $data);
                $this->load->view('templates/footer');
@@ -125,6 +137,18 @@ class Admin extends CI_Controller
           }
      }
 
+     public function ubah_user()
+     {
+          $data['title'] = 'Ubah Data User';
+          $data['user']  = $this->ModelAdmin->getTopbarName();
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/admin_sidebar', $data);
+          $this->load->view('templates/topbar', $data);
+          $this->load->view('admin/v-ubah-profil', $data);
+          $this->load->view('templates/footer');
+     }
+
      public function data_user()
      {
           $data['title'] = "Data User";
@@ -133,7 +157,7 @@ class Admin extends CI_Controller
 
           $config['base_url'] = base_url() . 'admin/data_user';
           $config['total_rows'] = $this->ModelUser->totalRows();
-          $config['per_page'] = 2;
+          $config['per_page'] = 10;
 
           //styling pagination dengan bootstrap
           $config['full_tag_open'] = '<nav><ul class="pagination">';
@@ -168,7 +192,7 @@ class Admin extends CI_Controller
           $data['start'] = $this->uri->segment(3);
           $user['user']  = $this->ModelUser->getUsers($config['per_page'], $data['start']);
           $this->load->view('templates/header', $data);
-          $this->load->view('templates/sidebar');
+          $this->load->view('templates/admin_sidebar');
           $this->load->view('templates/topbar');
           $this->load->view('admin/v-data-user', $user);
           $this->load->view('templates/footer');
@@ -178,12 +202,12 @@ class Admin extends CI_Controller
      {
           $data['title'] = "Detail User";
           $data['user']  = $this->ModelAdmin->getTopbarName();
-          $data['user']  = $this->ModelUser->getUserById($id);
+          $detail['user']  = $this->ModelUser->getUserById($id);
 
           $this->load->view('templates/header', $data);
-          $this->load->view('templates/sidebar');
+          $this->load->view('templates/admin_sidebar');
           $this->load->view('templates/topbar');
-          $this->load->view('admin/v-detail-user', $data);
+          $this->load->view('admin/v-detail-user', $detail);
           $this->load->view('templates/footer');
      }
 

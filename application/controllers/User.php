@@ -6,7 +6,18 @@ class User extends CI_Controller
      public function __construct()
      {
           parent::__construct();
-          is_login();
+          if ($this->session->userdata('email')) {
+               $email = $this->session->userdata('email');
+               //mengambil role_id
+               $role_id = $this->ModelUser->getUserByEmail($email)['role_id'];
+               if ($role_id === "1") {
+                    redirect('admin');
+               } elseif ($role_id === "3") {
+                    redirect('kepsek');
+               }
+          } else {
+               redirect('auth');
+          }
      }
 
      public function index()
@@ -16,7 +27,7 @@ class User extends CI_Controller
           $data['user']  = $this->ModelUser->getTopbarName();
 
           $this->load->view('templates/header', $data);
-          $this->load->view('templates/sidebar');
+          $this->load->view('templates/user_sidebar');
           $this->load->view('templates/topbar', $data);
           $this->load->view('user/index', $data);
           $this->load->view('templates/footer');
@@ -33,7 +44,7 @@ class User extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/user_sidebar', $data);
                $this->load->view('templates/topbar', $data);
                $this->load->view('user/ubah-profile', $data);
                $this->load->view('templates/footer');
@@ -95,7 +106,7 @@ class User extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/user_sidebar', $data);
                $this->load->view('templates/topbar', $data);
                $this->load->view('user/ubah-password', $data);
                $this->load->view('templates/footer');

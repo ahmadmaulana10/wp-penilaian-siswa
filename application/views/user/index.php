@@ -15,7 +15,7 @@
                               <div class="card-body">
                                    <h4 class="card-title"><?= ucwords($user['nama']); ?></h4>
                                    <p class="card-text"><?= $user['email']; ?></p>
-                                   <p class="card-text"><small class="text-muted">Jadi member sejak: <br><b><?= date('d F Y', $user['tanggal_buat']); ?></b></small></p>
+                                   <p class="card-text"><small class="text-muted">Jadi user sejak: <br><b><?= date('d F Y', $user['tanggal_buat']); ?></b></small></p>
                                    <a href="<?= base_url('user/ubahprofile'); ?>" class="btn btn-primary btn-sm mt-2 pl-4 pr-4"><i class="fas fa-edit"></i> Ubah Profil</a>
                               </div>
                          </div>
