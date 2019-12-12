@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2019 at 10:25 AM
+-- Generation Time: Dec 12, 2019 at 10:38 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -179,7 +179,9 @@ INSERT INTO `user_aksesmenu` (`id`, `role_id`, `menu_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (3, 2, 2),
-(6, 1, 3);
+(4, 1, 3),
+(5, 3, 2),
+(6, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -199,7 +201,7 @@ CREATE TABLE `user_menu` (
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Admin'),
 (2, 'User'),
-(3, 'Menu');
+(3, 'Kepsek');
 
 -- --------------------------------------------------------
 
@@ -293,6 +295,18 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_aksesmenu`
+--
+ALTER TABLE `user_aksesmenu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_menu`
+--
+ALTER TABLE `user_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
@@ -319,6 +333,18 @@ ALTER TABLE `nilai`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `user_aksesmenu`
+--
+ALTER TABLE `user_aksesmenu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user_menu`
+--
+ALTER TABLE `user_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_role`

@@ -21,33 +21,29 @@
                <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                          <li>
-                              <a href="<?= base_url('admin') ?>">
+                              <a href="<?= base_url('kepsek') ?>">
                                    <i class="fas fa-fw fa-home"></i>Dashboard</a>
                          </li>
 
                          <hr>
 
                          <li>
-                              <a href="<?= base_url('admin/data_user'); ?>">
-                                   <i class="fas fa-fw fa-users"></i>Data User</a>
-                         </li>
-                         <li>
-                              <a href="<?= base_url('admin/ubahPassword'); ?>">
+                              <a href="<?= base_url('kepsek/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>
                          </li>
 
                          <hr>
 
                          <li>
-                              <a href="<?= base_url('admin/data_siswa'); ?>">
+                              <a href="<?= base_url('kepsek/data_siswa'); ?>">
                                    <i class="fas fa-fw fa-address-card"></i>Data Siswa</a>
                          </li>
                          <li>
-                              <a href="<?= base_url('admin/data_guru'); ?>">
+                              <a href="<?= base_url('kepsek/data_guru'); ?>">
                                    <i class="fas fa-fw fa-university"></i>Data Guru</a>
                          </li>
                          <li>
-                              <a href="<?= base_url('admin/data_nilai'); ?>">
+                              <a href="<?= base_url('kepsek/data_nilai'); ?>">
                                    <i class="fas fa-fw fa-folder"></i>Data Nilai</a>
                          </li>
 
@@ -73,33 +69,29 @@
                <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                          <li>
-                              <a href="<?= base_url('admin') ?>">
+                              <a href="<?= base_url('kepsek') ?>">
                                    <i class="fas fa-fw fa-home"></i>Dashboard</a>
                          </li>
 
                          <hr>
 
                          <li>
-                              <a href="<?= base_url('admin/data_user'); ?>">
-                                   <i class="fas fa-fw fa-users"></i>Data User</a>
-                         </li>
-                         <li>
-                              <a href="<?= base_url('admin/ubahPassword'); ?>">
+                              <a href="<?= base_url('kepsek/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>
                          </li>
 
                          <hr>
 
                          <li>
-                              <a href="<?= base_url('admin/data_siswa'); ?>">
+                              <a href="<?= base_url('kepsek/data_siswa'); ?>">
                                    <i class="fas fa-fw fa-address-card"></i>Data Siswa</a>
                          </li>
                          <li>
-                              <a href="<?= base_url('admin/data_guru'); ?>">
+                              <a href="<?= base_url('kepsek/data_guru'); ?>">
                                    <i class="fas fa-fw fa-university"></i>Data Guru</a>
                          </li>
                          <li>
-                              <a href="<?= base_url('admin/data_nilai'); ?>">
+                              <a href="<?= base_url('kepsek/data_nilai'); ?>">
                                    <i class="fas fa-fw fa-folder"></i>Data Nilai</a>
                          </li>
 
