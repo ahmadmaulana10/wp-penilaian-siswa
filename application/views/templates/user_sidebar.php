@@ -36,7 +36,7 @@
 
                          <li>
                               <a href="<?= base_url('user/data_nilai'); ?>">
-                                   <i class="fas fa-fw fa-folder"></i>Data Nilai</a>
+                                   <i class="fas fa-fw fa-folder"></i>Data Nilai Siswa</a>
                          </li>
 
                          <hr>
@@ -76,7 +76,7 @@
 
                          <li>
                               <a href="<?= base_url('user/data_nilai'); ?>">
-                                   <i class="fas fa-fw fa-folder"></i>Data Nilai</a>
+                                   <i class="fas fa-fw fa-folder"></i>Data Nilai Siswa</a>
                          </li>
 
                          <hr>

@@ -15,6 +15,8 @@ class Kepsek extends CI_Controller
                } elseif ($role_id === "2") {
                     redirect('user');
                }
+          } else if (!$this->session->userdata('email')) {
+               redirect('auth');
           }
      }
 

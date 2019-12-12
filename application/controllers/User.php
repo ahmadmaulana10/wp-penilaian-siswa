@@ -15,6 +15,8 @@ class User extends CI_Controller
                } elseif ($role_id === "3") {
                     redirect('kepsek');
                }
+          } else {
+               redirect('auth');
           }
      }
 

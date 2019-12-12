@@ -4,11 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Auth extends CI_Controller
 {
 
-     public function __construct()
+     private function cek_login()
      {
-          parent::__construct();
           if ($this->session->userdata('email')) {
+
                $email = $this->session->userdata('email');
+
                //mengambil role_id
                $role_id = $this->ModelUser->getUserByEmail($email)['role_id'];
                if ($role_id === "1") {
@@ -23,6 +24,7 @@ class Auth extends CI_Controller
 
      public function index()
      {
+          $this->cek_login();
 
           $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
                'required' => 'Email harus diisi!',
@@ -432,6 +434,8 @@ class Auth extends CI_Controller
 
      public function logout()
      {
+          // var_dump($this->session->userdata('email'));
+          // die();
           $this->session->unset_userdata('email');
           $this->session->unset_userdata('role_id');
 
