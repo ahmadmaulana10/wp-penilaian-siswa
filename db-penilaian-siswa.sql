@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2019 at 10:38 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Dec 12, 2019 at 10:50 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,15 +30,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `detail_nilai` (
   `id_nilai` int(6) NOT NULL,
-  `kode_mapel` char(5) NOT NULL
+  `kode_mapel` char(5) NOT NULL,
+  `nilai` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_nilai`
 --
 
-INSERT INTO `detail_nilai` (`id_nilai`, `kode_mapel`) VALUES
-(1, '00001');
+INSERT INTO `detail_nilai` (`id_nilai`, `kode_mapel`, `nilai`) VALUES
+(1, '00001', 0);
 
 -- --------------------------------------------------------
 
@@ -99,16 +100,15 @@ INSERT INTO `mata_pelajaran` (`kode_mapel`, `nama_mapel`) VALUES
 
 CREATE TABLE `nilai` (
   `id_nilai` int(6) NOT NULL,
-  `nisn` char(10) NOT NULL,
-  `nilai` int(3) NOT NULL
+  `nisn` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `nilai`
 --
 
-INSERT INTO `nilai` (`id_nilai`, `nisn`, `nilai`) VALUES
-(1, '9993372001', 90);
+INSERT INTO `nilai` (`id_nilai`, `nisn`) VALUES
+(1, '9993372001');
 
 -- --------------------------------------------------------
 
