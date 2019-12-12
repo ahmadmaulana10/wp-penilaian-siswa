@@ -23,6 +23,11 @@ class ModelUser extends CI_Model
           $this->db->insert('user', $data);
      }
 
+     public function updateUser($data = 'user', $where = null)
+     {
+          $this->db->update('user', $data, $where);
+     }
+
      public function totalRows()
      {
           return $this->db->get('user')->num_rows();

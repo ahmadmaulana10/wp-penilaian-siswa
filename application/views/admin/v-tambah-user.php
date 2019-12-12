@@ -9,6 +9,7 @@
                     <div class="col-lg-11">
 
                         <?= form_open_multipart('admin/tambah_user'); ?>
+
                         <div class="form-group row">
                             <label for="nama" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-10">
@@ -26,7 +27,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">Password</label>
+                            <label for="password" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="password" name="password" placeholder="Ketik Password. . . ">
                                 <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -34,18 +35,27 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">Role</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="role_id" name="role_id" placeholder="Ketik Role Id. . . ">
+                            <label for="role_id" class="col-sm-2 col-form-label">Role</label>
+                            <div class="col-sm-5">
+                                <select name="role_id" id="role_id" class="form-control form-control-user">
+                                    <option value="">--Pilih Level--</option>
+                                    <option value="1">admin</option>
+                                    <option value="2">guru</option>
+                                    <option value="3">kepala sekolah</option>
+                                </select>
                                 <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">Status</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="is_active" name="is_active" placeholder="Ketik Status. . . ">
-                                <?= form_error('status', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label for="is_active" class="col-sm-2 col-form-label">Status</label>
+                            <div class="col-sm-5">
+                                <select name="is_active" id="is_active" class="form-control form-control-user">
+                                    <option value="">--Pilih Status--</option>
+                                    <option value="1">Aktif</option>
+                                    <option value="0">Nonaktif</option>
+                                </select>
+                                <?= form_error('is_active', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
 
@@ -61,12 +71,16 @@
 
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary pl-4 pr-4 mr-3"><i class="fas fa-plus"></i> Tambah</button>
+                                <button type="submit" class="btn btn-primary pl-4 pr-4 mr-3">
+                                    <i class="fas fa-plus"></i> Tambah
+                                </button>
+
+                                <button class="btn btn-dark pl-3 pr-3" onclick="window.history.go(-1)">
+                                    <i class="fa fa-arrow-left"></i> Kembali
+                                    </a>
                             </div>
-                            <button class="btn btn-dark pl-3 pr-3" onclick="window.history.go(-1)">
-                                <i class="fa fa-arrow-left"></i> Kembali
-                            </button>
                         </div>
+                        </form>
 
                     </div>
                 </div>

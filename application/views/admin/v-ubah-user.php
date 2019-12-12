@@ -9,6 +9,15 @@
                <div class="row">
                     <div class="col-lg-11">
                          <?= form_open_multipart('admin/ubah_user'); ?>
+
+                         <div class="form-group row">
+                              <label for="nama" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                              <div class="col-sm-10">
+                                   <input type="text" class="form-control" id="nama" name="nama" value="<?= $user['nama']; ?>">
+                                   <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                              </div>
+                         </div>
+
                          <div class="form-group row">
                               <label for="email" class="col-sm-2 col-form-label">Email</label>
                               <div class="col-sm-10">
@@ -17,10 +26,9 @@
                          </div>
 
                          <div class="form-group row">
-                              <label for="nama" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                              <label for="email" class="col-sm-2 col-form-label">Password</label>
                               <div class="col-sm-10">
-                                   <input type="text" class="form-control" id="nama" name="nama" value="<?= $user['nama']; ?>">
-                                   <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                                   <input type="text" class="form-control" id="password" name="password" value="<?= $user['password']; ?>" readonly>
                               </div>
                          </div>
 

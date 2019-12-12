@@ -142,11 +142,61 @@ class Admin extends CI_Controller
           $data['title'] = 'Ubah Data User';
           $data['user']  = $this->ModelAdmin->getTopbarName();
 
-          $this->load->view('templates/header', $data);
-          $this->load->view('templates/admin_sidebar', $data);
-          $this->load->view('templates/topbar', $data);
-          $this->load->view('admin/v-ubah-profil', $data);
-          $this->load->view('templates/footer');
+          $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim', [
+               'required' => "Nama lengkap harus diisi!"
+          ]);
+
+          $this->form_validation->set_rules('role_id', 'role_id', 'required', [
+               'required' => "level harus pilih!",
+
+          ]);
+          $this->form_validation->set_rules('is_active', 'is_active', 'required', [
+               'required' => "status harus pilih!",
+
+          ]);
+
+          if ($this->form_validation->run() == false) {
+               $this->load->view('templates/header', $data);
+               $this->load->view('templates/admin_sidebar', $data);
+               $this->load->view('templates/topbar', $data);
+               $this->load->view('admin/v-ubah-user', $data);
+               $this->load->view('templates/footer');
+          } else {
+
+               //jika ada gambar yang akan diupload
+               $upload_gambar = $_FILES['gambar']['name'];
+               if ($upload_gambar) {
+                    $config['upload_path'] = './assets/img/profile/';
+                    $config['allowed_types'] = 'gif|jpg|png';
+                    $config['max_size'] = '3000';
+                    $config['max_width'] = '1024';
+                    $config['max_height'] = '1000';
+                    $config['file_name'] = 'pro' . time();
+                    $this->load->library('upload', $config);
+                    if ($this->upload->do_upload('gambar')) {
+                         $gambar_lama = $data['user']['gambar'];
+                         if ($gambar_lama != 'default.jpg') {
+                              unlink(FCPATH . 'assets/img/profile/' . $gambar_lama);
+                         }
+                         $gambar_baru = $this->upload->data('file_name');
+                         $this->db->set('gambar', $gambar_baru);
+                    } else {
+                         echo $this->upload->display_errors();
+                    }
+               }
+               $data = [
+                    'nama' => $this->input->post('nama', true),
+                    'password' => $this->input->post('password', true),
+                    'role_id' => $this->input->post('role_id', true),
+                    'is_active' => $this->input->post('is_active', true),
+                    'tanggal_buat' => date('Y M d')
+               ];
+               $id['id'] = $this->input->post('id');
+               $this->ModelBuku->updateUser($data, $id);
+
+               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile berhasil diubah!</div>');
+               redirect('admin/data_user');
+          }
      }
 
      public function data_user()
@@ -216,7 +266,7 @@ class Admin extends CI_Controller
           $data['title'] = "Tambah User";
           $data['user']  = $this->ModelAdmin->getTopbarName();
 
-          $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
+          $this->form_validation->set_rules('nama', 'Nama', 'required|min_length[3]', [
                'required' => 'Nama harus diisi',
                'min_length' => 'Nama terlalu pendek'
           ]);
@@ -227,10 +277,12 @@ class Admin extends CI_Controller
                'required' => "Password harus diisi!"
           ]);
           $this->form_validation->set_rules('role_id', 'role_id', 'required', [
-               'required' => "role harus diisi!"
+               'required' => "level harus pilih!",
+
           ]);
           $this->form_validation->set_rules('is_active', 'is_active', 'required', [
-               'required' => "role harus diisi!"
+               'required' => "status harus pilih!",
+
           ]);
 
           //jika ada gambar yang akan diupload
@@ -268,7 +320,7 @@ class Admin extends CI_Controller
                $this->ModelUser->simpanData($data);
 
 
-               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data  Telah ditambah!</div>');
+               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Telah ditambah!</div>');
                redirect('admin/data_user');
           }
      }
