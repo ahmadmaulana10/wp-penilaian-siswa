@@ -5,6 +5,13 @@
             <?= $this->session->flashdata('pesan'); ?>
             <div class="row">
                 <div class="col-lg-12">
+                    <div class="form-group row justify-content-end">
+                        <div class="col-sm">
+                            <a href="<?= base_url('admin/tambah_user'); ?>" class="btn btn-success mb-3">
+                                <i class="fas fa-file-alt"></i> Data Baru
+                            </a>
+                        </div>
+                    </div>
                     <!-- DATA TABLE-->
                     <div class="table-responsive table-earning">
                         <table class="table table-bordered table-data3">

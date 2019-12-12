@@ -187,6 +187,68 @@ class Admin extends CI_Controller
           $this->load->view('templates/footer');
      }
 
+     public function tambah_user()
+     {
+          $data['title'] = "Tambah User";
+          $data['user']  = $this->ModelAdmin->getTopbarName();
+
+          $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
+               'required' => 'Nama harus diisi',
+               'min_length' => 'Nama terlalu pendek'
+          ]);
+          $this->form_validation->set_rules('email', 'Email', 'required|trim', [
+               'required' => 'Email harus diisi',
+          ]);
+          $this->form_validation->set_rules('password', 'Password', 'required|trim', [
+               'required' => "Password harus diisi!"
+          ]);
+          $this->form_validation->set_rules('role_id', 'role_id', 'required', [
+               'required' => "role harus diisi!"
+          ]);
+          $this->form_validation->set_rules('is_active', 'is_active', 'required', [
+               'required' => "role harus diisi!"
+          ]);
+
+          //jika ada gambar yang akan diupload
+          $config['upload_path'] = './assets/img/profile/';
+          $config['allowed_types'] = 'gif|jpg|png';
+          $config['max_size'] = '3000';
+          $config['max_width'] = '1024';
+          $config['max_height'] = '1000';
+          $config['file_name'] = 'pro' . time();
+
+          $this->load->library('upload', $config);
+          if ($this->form_validation->run() == false) {
+               $this->load->view('templates/header', $data);
+               $this->load->view('templates/sidebar');
+               $this->load->view('templates/topbar');
+               $this->load->view('admin/v-tambah-user', $data);
+               $this->load->view('templates/footer');
+          } else {
+               if ($this->upload->do_upload('image')) {
+                    $image = $this->upload->data();
+                    $gambar = $image['file_name'];
+               } else {
+                    $gambar = '';
+               }
+               $data = [
+                    'nama' => $this->input->post('nama', true),
+                    'email' => $this->input->post('email', true),
+                    'gambar' => $gambar,
+                    'password' => $this->input->post('password', true),
+                    'role_id' => $this->input->post('role_id', true),
+                    'is_active' => $this->input->post('is_active', true),
+                    'tanggal_buat' => date('Y M d')
+               ];
+               $this->load->library('upload', $config);
+               $this->ModelUser->simpanData($data);
+
+
+               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data  Telah ditambah!</div>');
+               redirect('admin/data_user');
+          }
+     }
+
      public function hapus_user($id)
      {
           $this->ModelAdmin->hapusUser($id);

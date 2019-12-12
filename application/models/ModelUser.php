@@ -18,6 +18,11 @@ class ModelUser extends CI_Model
           return $this->db->get('user', $limit, $start)->result_array();
      }
 
+     public function simpanData($data = null)
+     {
+          $this->db->insert('user', $data);
+     }
+
      public function totalRows()
      {
           return $this->db->get('user')->num_rows();
