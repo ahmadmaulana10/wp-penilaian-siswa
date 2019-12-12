@@ -12,7 +12,7 @@
 
                         <div class="form-group row">
                             <label for="nama" class="col-sm-2 col-form-label">Nama Lengkap</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-8">
                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Ketik Nama lengkap. . .">
                                 <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -20,7 +20,7 @@
 
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-8">
                                 <input type="text" class="form-control" id="email" name="email" placeholder="Ketik Email. . . ">
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -28,8 +28,8 @@
 
                         <div class="form-group row">
                             <label for="password" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="password" name="password" placeholder="Ketik Password. . . ">
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Ketik Password. . . ">
                                 <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -39,9 +39,9 @@
                             <div class="col-sm-5">
                                 <select name="role_id" id="role_id" class="form-control form-control-user">
                                     <option value="">--Pilih Level--</option>
-                                    <option value="1">admin</option>
-                                    <option value="2">guru</option>
-                                    <option value="3">kepala sekolah</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Guru</option>
+                                    <option value="3">Kepala Sekolah</option>
                                 </select>
                                 <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -53,7 +53,7 @@
                                 <select name="is_active" id="is_active" class="form-control form-control-user">
                                     <option value="">--Pilih Status--</option>
                                     <option value="1">Aktif</option>
-                                    <option value="0">Nonaktif</option>
+                                    <option value="0">Tidak Aktif</option>
                                 </select>
                                 <?= form_error('is_active', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -61,7 +61,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-2">Gambar</div>
-                            <div class="col-sm-5">
+                            <div class="col-sm-8">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="gambar" name="gambar">
                                     <label class="custom-file-label" for="gambar">Pilih file</label>

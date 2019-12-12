@@ -8,7 +8,7 @@
                     <div class="form-group row justify-content-end">
                         <div class="col-sm">
                             <a href="<?= base_url('admin/tambah_user'); ?>" class="btn btn-success mb-3">
-                                <i class="fas fa-file-alt"></i> Data Baru
+                                <i class="fas fa-user-plus"></i> Tambah User
                             </a>
                         </div>
                     </div>
