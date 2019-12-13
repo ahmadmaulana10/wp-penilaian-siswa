@@ -13,4 +13,9 @@ class ModelAdmin extends CI_Model
           $this->db->where('id', $id);
           $this->db->delete('user');
      }
+
+     public function getUserById($id)
+     {
+          return $this->db->get_where('user', ['id' => $id])->row_array();
+     }
 }

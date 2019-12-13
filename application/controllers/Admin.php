@@ -137,15 +137,19 @@ class Admin extends CI_Controller
           }
      }
 
-     public function ubah_user()
+     public function ubah_user($id)
      {
-          $data['title'] = 'Ubah Data User';
+          $data['title'] = "Ubah User";
           $data['user']  = $this->ModelAdmin->getTopbarName();
+          $data['user'] = $this->ModelUser->getUserById($id);
 
-          $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim', [
-               'required' => "Nama lengkap harus diisi!"
+          $this->form_validation->set_rules('nama', 'Nama', 'required|min_length[3]', [
+               'required' => 'Nama harus diisi',
+               'min_length' => 'Nama terlalu pendek'
           ]);
-
+          $this->form_validation->set_rules('email', 'Email', 'required|trim', [
+               'required' => 'Email harus diisi',
+          ]);
           $this->form_validation->set_rules('role_id', 'role_id', 'required', [
                'required' => "level harus pilih!",
 
@@ -157,13 +161,11 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/admin_sidebar', $data);
-               $this->load->view('templates/topbar', $data);
+               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/topbar');
                $this->load->view('admin/v-ubah-user', $data);
                $this->load->view('templates/footer');
           } else {
-
-               //jika ada gambar yang akan diupload
                $upload_gambar = $_FILES['gambar']['name'];
                if ($upload_gambar) {
                     $config['upload_path'] = './assets/img/profile/';
@@ -186,15 +188,15 @@ class Admin extends CI_Controller
                }
                $data = [
                     'nama' => $this->input->post('nama', true),
-                    'password' => $this->input->post('password', true),
+                    'email' => $this->input->post('email', true),
+                    // 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                     'role_id' => $this->input->post('role_id', true),
                     'is_active' => $this->input->post('is_active', true),
-                    'tanggal_buat' => date('Y M d')
+                    'gambar' => $upload_gambar
                ];
-               $id['id'] = $this->input->post('id');
-               $this->ModelBuku->updateUser($data, $id);
 
-               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile berhasil diubah!</div>');
+               $this->ModelUser->ubahUser($data);
+               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diubah!</div>');
                redirect('admin/data_user');
           }
      }
