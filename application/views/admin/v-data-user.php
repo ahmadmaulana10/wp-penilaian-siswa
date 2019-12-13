@@ -62,9 +62,14 @@
                                                 <a href="<?= base_url('admin/ubah_user/') . $users['id']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Ubah">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
-                                                <a href="<?= base_url('admin/hapus_user/') . $users['id']; ?>" onclick="return confirm('Pilih OK jika ingin hapus user.'); " class="item" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                                <button class="item" onclick="
+                                                    // validasi ketika tombol hapus diklik
+                                                    if (confirm('Yakin mau dihapus ?')) {
+                                                        window.location.href = '<?= base_url('admin/hapus_user/') . $users['id']; ?>';
+                                                    }
+                                                    " data-toggle="tooltip" data-placement="top" title="Hapus">
                                                     <i class="zmdi zmdi-delete"></i>
-                                                </a>
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>

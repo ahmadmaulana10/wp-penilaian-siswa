@@ -36,6 +36,7 @@
      </div>
 </div>
 
+
 <!-- Jquery JS-->
 <script src="<?= base_url('assets/') ?>vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap JS-->
@@ -59,7 +60,6 @@
 
 <!-- Main JS-->
 <script src="<?= base_url('assets/') ?>js/main.js"></script>
-
 <script>
      // Agar cari gambar bisa menampilkan url direktori
      $('.custom-file-input').on('change', function() {
