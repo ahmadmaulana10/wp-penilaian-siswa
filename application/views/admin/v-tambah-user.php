@@ -13,7 +13,7 @@
                         <div class="form-group row">
                             <label for="nama" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Ketik Nama lengkap. . .">
+                                <input type="text" class="form-control" id="nama" name="nama" value="<?= set_value('nama'); ?>" placeholder="Ketik Nama lengkap. . .">
                                 <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Ketik Email. . . ">
+                                <input type="text" class="form-control" id="email" name="email" value="<?= set_value('email'); ?>" placeholder="Ketik Email. . . ">
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="role_id" class="col-sm-2 col-form-label">Role</label>
+                            <label for="role_id" class="col-sm-2 col-form-label">Level</label>
                             <div class="col-sm-5">
                                 <select name="role_id" id="role_id" class="form-control form-control-user">
                                     <option value="">--Pilih Level--</option>
