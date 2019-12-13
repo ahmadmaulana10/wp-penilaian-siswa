@@ -3,7 +3,7 @@
      <div class="section__content section__content--p30">
           <div class="container-fluid">
                <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-               <?= $this->session->flashdata('pesan'); ?>
+               <?= $this->session->flashdata('message'); ?>
 
                <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
@@ -16,7 +16,7 @@
                                    <h4 class="card-title"><?= ucwords($user['nama']); ?></h4>
                                    <p class="card-text"><?= $user['email']; ?></p>
                                    <p class="card-text"><small class="text-muted">Jadi user sejak: <br><b><?= date('d F Y', $user['tanggal_buat']); ?></b></small></p>
-                                   <a href="<?= base_url('user/ubahprofile'); ?>" class="btn btn-primary btn-sm mt-2 pl-4 pr-4"><i class="fas fa-edit"></i> Ubah Profil</a>
+                                   <a href="<?= base_url('user/ubah_profil'); ?>" class="btn btn-primary btn-sm mt-2 pl-4 pr-4"><i class="fas fa-edit"></i> Ubah Profil</a>
                               </div>
                          </div>
                     </div>

@@ -22,7 +22,6 @@ class Admin extends CI_Controller
 
      public function index()
      {
-
           $data['title'] = "Admin";
           $data['user']  = $this->ModelAdmin->getTopbarName();
 
@@ -33,10 +32,9 @@ class Admin extends CI_Controller
           $this->load->view('templates/footer');
      }
 
-
      public function ubah_profil()
      {
-          $data['title'] = "Ubah Profil";
+          $data['title'] = 'Ubah Profile';
           $data['user']  = $this->ModelAdmin->getTopbarName();
 
           $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim', [
@@ -45,8 +43,8 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/admin_sidebar');
-               $this->load->view('templates/topbar');
+               $this->load->view('templates/sidebar');
+               $this->load->view('templates/topbar', $data);
                $this->load->view('admin/ubah-profil', $data);
                $this->load->view('templates/footer');
           } else {

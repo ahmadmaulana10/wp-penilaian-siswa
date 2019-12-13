@@ -75,9 +75,9 @@
                                     <i class="fas fa-plus"></i> Tambah
                                 </button>
 
-                                <button class="btn btn-dark pl-3 pr-3" onclick="window.history.go(-1)">
+                                <a href="<?= base_url('admin/data-user'); ?>" class="btn btn-dark pl-3 pr-3" onclick="window.history.go(-1)">
                                     <i class="fa fa-arrow-left"></i> Kembali
-                                    </a>
+                                </a>
                             </div>
                         </div>
                         </form>

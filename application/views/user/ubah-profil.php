@@ -7,7 +7,7 @@
 
                <div class="row">
                     <div class="col-lg-11">
-                         <?= form_open_multipart('admin/ubah_profil'); ?>
+                         <?= form_open_multipart('user/ubah_profil'); ?>
                          <div class="form-group row">
                               <label for="email" class="col-sm-2 col-form-label">Email</label>
                               <div class="col-sm-10">
@@ -44,7 +44,7 @@
                          <div class="form-group row justify-content-end">
                               <div class="col-sm-10">
                                    <button type="submit" class="btn btn-primary pl-4 pr-4 mr-3"><i class="fas fa-edit"></i> Ubah</button>
-                                   <a href="<?= base_url('admin'); ?>" class="btn btn-dark pl-3 pr-3"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                   <a href="<?= base_url('user'); ?>" class="btn btn-dark pl-3 pr-3"><i class="fa fa-arrow-left"></i> Kembali</a>
                               </div>
                          </div>
                          </form>

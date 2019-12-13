@@ -23,16 +23,9 @@
                               <div class="form-group row">
                                    <label for="email" class="col-sm-2 col-form-label">Email</label>
                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>">
+                                        <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
                                    </div>
                               </div>
-
-                              <!-- <div class="form-group row">
-                                   <label for="password" class="col-sm-2 col-form-label">Password</label>
-                                   <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="password" name="password" value="<?= $user['password']; ?>">
-                                   </div>
-                              </div> -->
 
                               <div class="row form-group">
                                    <div class="col col-sm-2">
@@ -71,28 +64,10 @@
                                    </div>
                               </div>
 
-                              <div class="form-group row">
-                                   <div class="col-sm-2">Gambar</div>
-                                   <div class="col-sm-10">
-                                        <div class="row">
-                                             <div class="col-sm-3">
-                                                  <img src="<?= base_url('assets/img/profile/') . $user['gambar']; ?>" class="img-thumbnail" name="gambar">
-                                             </div>
-
-                                             <div class="col-sm-9">
-                                                  <div class="custom-file">
-                                                       <input type="file" class="custom-file-input" id="gambar" name="gambar">
-                                                       <label class="custom-file-label" for="gambar">Pilih file</label>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
                               <div class="form-group row justify-content-end">
                                    <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary pl-4 pr-4 mr-3"><i class="fas fa-edit"></i> Ubah</button>
-                                        <button class="btn btn-dark pl-3 pr-3" onclick="window.history.go(-1)"><i class="fa fa-arrow-left"></i> Kembali</button>
+                                        <a href="<?= base_url('admin/data-user'); ?>" class="btn btn-dark pl-3 pr-3" onclick="window.history.go(-1)"><i class="fa fa-arrow-left"></i> Kembali</a>
                                    </div>
                               </div>
                          </form>
