@@ -421,14 +421,91 @@ class Admin extends CI_Controller
                     'tempat_lahir' => $this->input->post('tempat_lahir', true),
                     'tgl_lahir' => $this->input->post('tgl_lahir', true),
                     'alamat' => $this->input->post('alamat', true),
-                    'jk' => $this->input->post('jk', true),
-                    'gambar' => $upload_gambar
+                    'jk' => $this->input->post('jk', true)
+                    
                ];
 
                $this->load->library('upload', $config);
                $this->ModelSiswa->simpanData($data);
 
                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Siswa Telah ditambah!</div>');
+               redirect('admin/data_siswa');
+          }
+     }
+
+     public function ubah_siswa($nisn = 'nisn')
+     {
+          $data['title'] = "Ubah Siswa";
+          $data['user']  = $this->ModelAdmin->getTopbarName();
+          $data['siswa'] = $this->ModelSiswa->getSiswaById($nisn);
+
+          $this->form_validation->set_rules('nisn', 'NISN', 'required|min_length[8]|numeric', [
+               'required' => 'NISN harus diisi !',
+               'min_length' => 'NISN terlalu pendek !',
+               'numeric' => 'Harus angka !'
+          ]);
+
+          $this->form_validation->set_rules('nama_siswa', 'Nama Siswa', 'required|min_length[3]', [
+               'required' => 'Nama siswa harus diisi !',
+               'min_length' => 'Nama siswa terlalu pendek !'
+          ]);
+
+          $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|min_length[5]', [
+               'required' => 'Tempat Lahir harus diisi !',
+               'min_length' => 'Tempat Lahir terlalu pendek!'
+          ]);
+
+          $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim', [
+               'required' => 'Tanggal Lahir harus diisi !'
+          ]);
+
+          $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
+               'required' => 'Alamat harus diisi !',
+          ]);
+
+          $this->form_validation->set_rules('jk', 'JK', 'required|max_length[1]', [
+               'required' => 'Jenis Kelamin harus diisi !',
+               'max_length' => 'Hanya L atau P'
+          ]);
+          if ($this->form_validation->run() == false) {
+               $this->load->view('templates/header', $data);
+               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/topbar');
+               $this->load->view('siswa/v-ubah-siswa', $data);
+               $this->load->view('templates/footer');
+          } else {
+               $upload_gambar = $_FILES['gambar']['nama'];
+               if ($upload_gambar) {
+                    $config['upload_path'] = './assets/img/profile/';
+                    $config['allowed_types'] = 'gif|jpg|png';
+                    $config['max_size'] = '3000';
+                    $config['max_width'] = '1024';
+                    $config['max_height'] = '1000';
+                    $config['file_name'] = 'pro' . time();
+                    $this->load->library('upload', $config);
+                    if ($this->upload->do_upload('gambar')) {
+                         $gambar_lama = $data['user']['gambar'];
+                         if ($gambar_lama != 'default.jpg') {
+                              unlink(FCPATH . 'assets/img/profile/' . $gambar_lama);
+                         }
+                         $gambar_baru = $this->upload->data('file_name');
+                         $this->db->set('gambar', $gambar_baru);
+                    } else {
+                         echo $this->upload->display_errors();
+                    }
+               }
+               $data = [
+                    'nisn' => $this->input->post('nisn', true),
+                    'nama_siswa' => $this->input->post('nama_siswa', true),
+                    'tempat_lahir' => $this->input->post('tempat_lahir', true),
+                    'tgl_lahir' => $this->input->post('tgl_lahir', true),
+                    'alamat' => $this->input->post('alamat', true),
+                    'jk' => $this->input->post('jk', true),
+                    'gambar' => $upload_gambar
+               ];
+
+               $this->ModelSiswa->updateSiswa($data);
+               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diubah!</div>');
                redirect('admin/data_siswa');
           }
      }
