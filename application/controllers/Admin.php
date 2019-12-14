@@ -164,7 +164,7 @@ class Admin extends CI_Controller
                $this->load->view('admin/v-ubah-user', $data);
                $this->load->view('templates/footer');
           } else {
-               $upload_gambar = $_FILES['gambar']['name'];
+               $upload_gambar = $_FILES['gambar']['nama'];
                if ($upload_gambar) {
                     $config['upload_path'] = './assets/img/profile/';
                     $config['allowed_types'] = 'gif|jpg|png';
@@ -301,24 +301,37 @@ class Admin extends CI_Controller
                $this->load->view('admin/v-tambah-user', $data);
                $this->load->view('templates/footer');
           } else {
-               if ($this->upload->do_upload('image')) {
-                    $image = $this->upload->data();
-                    $gambar = $image['file_name'];
-               } else {
-                    $gambar = '';
+               $upload_gambar = $_FILES['gambar']['name'];
+               if ($upload_gambar) {
+                    $config['upload_path'] = './assets/img/profile/';
+                    $config['allowed_types'] = 'gif|jpg|png';
+                    $config['max_size'] = '3000';
+                    $config['max_width'] = '1024';
+                    $config['max_height'] = '1000';
+                    $config['file_name'] = 'pro' . time();
+                    $this->load->library('upload', $config);
+                    if ($this->upload->do_upload('gambar')) {
+                         $gambar_lama = $data['user']['gambar'];
+                         if ($gambar_lama != 'default.jpg') {
+                              unlink(FCPATH . 'assets/img/profile/' . $gambar_lama);
+                         }
+                         $gambar_baru = $this->upload->data('file_name');
+                         $this->db->set('gambar', $gambar_baru);
+                    } else {
+                         echo $this->upload->display_errors();
+                    }
                }
                $data = [
                     'nama' => $this->input->post('nama', true),
                     'email' => $this->input->post('email', true),
-                    'gambar' => $gambar,
-                    'password' => $this->input->post('password', true),
+                    'gambar' => $upload_gambar,
+                    'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                     'role_id' => $this->input->post('role_id', true),
                     'is_active' => $this->input->post('is_active', true),
-                    'tanggal_buat' => date('Y M d')
+                    'tanggal_buat' => time()
                ];
                $this->load->library('upload', $config);
                $this->ModelUser->simpanData($data);
-
 
                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Telah ditambah!</div>');
                redirect('admin/data_user');
@@ -330,5 +343,55 @@ class Admin extends CI_Controller
           $this->ModelAdmin->hapusUser($id);
           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User berhasil dihapus!</div>');
           redirect('admin/data_user');
+     }
+
+     public function data_siswa()
+     {
+          $data['title'] = "Data Siswa";
+          $data['user']  = $this->ModelUser->getTopbarName();
+
+
+          $config['base_url'] = base_url() . 'admin/data_siswa';
+          $config['total_rows'] = $this->ModelSiswa->totalRows();
+          $config['per_page'] = 10;
+
+          //styling pagination dengan bootstrap
+          $config['full_tag_open'] = '<nav><ul class="pagination">';
+          $config['full_tag_close'] = '</ul></nav>';
+
+          $config['first_link'] = 'First';
+          $config['first_tag_open'] = '<li class="page-item">';
+          $config['first_tag_close'] = '</li>';
+
+          $config['last_link'] = 'Last';
+          $config['last_tag_open'] = '<li class="page-item">';
+          $config['last_tag_close'] = '</li>';
+
+          $config['next_link'] = '&raquo';
+          $config['next_tag_open'] = '<li class="page-item">';
+          $config['next_tag_close'] = '</li>';
+
+          $config['prev_link'] = '&laquo';
+          $config['prev_tag_open'] = '<li class="page-item">';
+          $config['prev_tag_close'] = '</li>';
+
+          $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+          $config['cur_tag_close'] = '</a></li>';
+
+          $config['num_tag_open'] = '<li class="page-item">';
+          $config['num_tag_close'] = '</li>';
+
+          $config['attributes'] = array('class' => 'page-link');
+
+          $this->pagination->initialize($config);
+
+          $data['start'] = $this->uri->segment(3);
+          $user['siswa']  = $this->ModelSiswa->getUsers($config['per_page'], $data['start']);
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/admin_sidebar');
+          $this->load->view('templates/topbar', $data);
+          $this->load->view('siswa/v-data-siswa', $user);
+          $this->load->view('templates/footer');
      }
 }
