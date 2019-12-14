@@ -21,11 +21,10 @@
                                     <th class="text-center">No</th>
                                     <th class="text-center">nisn</th>
                                     <th>nama siswa</th>
-                                    <th class="text-center">tempat lahir</th>
                                     <th class="text-center">tanggal lahir</th>
+                                    <!-- <th class="text-center">agama</th> -->
                                     <th class="text-center">alamat</th>
                                     <th class="text-center">jenis kelamin</th>
-                                    <th class="text-center">gambar</th>
                                     <th class="text-center">aksi</th>
                                 </tr>
                             </thead>
@@ -37,11 +36,9 @@
                                         <td align="center"><?= ++$start; ?></td>
                                         <td><?= $siswas['nisn']; ?></td>
                                         <td><?= ucwords($siswas['nama_siswa']); ?></td>
-                                        <td><?= ucwords($siswas['tempat_lahir']); ?></td>
                                         <td><?= date('d-m-Y', strtotime($siswas['tgl_lahir'])); ?></td>
                                         <td><?= ucwords($siswas['alamat']); ?></td>
                                         <td><?= $siswas['jk'] == "l" ? "Laki-Laki" : "Perempuan"; ?></td>
-                                        <td align="center"><img src="<?= base_url('assets/img/profile/') ?><?= $siswas['gambar']; ?>" class="gambar rounded"></td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a href="<?= base_url('admin/detail_siswa/') . $siswas['nisn']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
