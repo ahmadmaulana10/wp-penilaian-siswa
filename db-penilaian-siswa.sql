@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2019 at 10:50 AM
+-- Generation Time: Dec 14, 2019 at 09:23 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.32
 
@@ -70,8 +70,33 @@ INSERT INTO `guru` (`nip`, `nama_guru`, `tempat_lahir`, `tgl_lahir`, `jk`, `gamb
 --
 
 CREATE TABLE `kelas` (
-  `id_kelas` char(5) NOT NULL,
-  `nama_kelas` varchar(35) NOT NULL
+  `id_kelas` int(5) NOT NULL,
+  `nama_kelas` varchar(35) NOT NULL,
+  `ket` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `ket`) VALUES
+(1, 'I', 'Kelas 1'),
+(2, 'II', 'Kelas 2'),
+(3, 'III', 'Kelas 3'),
+(4, 'IV', 'Kelas 4'),
+(5, 'V', 'Kelas 5'),
+(6, 'VI', 'Kelas 6');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelas_siswa`
+--
+
+CREATE TABLE `kelas_siswa` (
+  `id` int(5) NOT NULL,
+  `id_kelas` int(5) NOT NULL,
+  `nisn` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -121,6 +146,7 @@ CREATE TABLE `siswa` (
   `nama_siswa` varchar(128) NOT NULL,
   `tempat_lahir` varchar(35) NOT NULL,
   `tgl_lahir` date NOT NULL,
+  `agama` varchar(15) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `jk` varchar(1) NOT NULL,
   `gambar` varchar(256) NOT NULL
@@ -130,8 +156,18 @@ CREATE TABLE `siswa` (
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`nisn`, `nama_siswa`, `tempat_lahir`, `tgl_lahir`, `alamat`, `jk`, `gambar`) VALUES
-('9993372001', 'hansen', 'bogor', '2009-12-01', 'rancabungur', 'l', 'default.jpg');
+INSERT INTO `siswa` (`nisn`, `nama_siswa`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `jk`, `gambar`) VALUES
+('9993372001', 'hansen', 'bogor', '2009-12-01', 'konghucu', 'rancabungur', 'l', 'default.jpg'),
+('9993372002', 'ahmad', 'bogor', '2000-12-05', 'islam', 'ciomas', 'l', 'default.jpg'),
+('9993372003', 'tias', 'palembang', '1999-12-19', 'islam', 'ciwaringin', 'p', 'default.jpg'),
+('9993372004', 'budi', 'bogor', '1986-10-05', 'islam', 'dramaga', 'l', 'default.jpg'),
+('9993372005', 'nia', 'bandung', '2001-01-19', 'islam', 'ciawi', 'p', 'default.jpg'),
+('9993372007', 'maulana', 'jakarta', '1999-12-12', 'islam', 'ciapus', 'l', 'default.jpg'),
+('9993372008', 'toni', 'jogjakarta', '1999-10-10', 'kristen', 'ciampea', 'l', 'default.jpg'),
+('9993372009', 'tasya', 'surabaya', '1998-10-09', 'kristen', 'cibinong', 'p', 'default.jpg'),
+('9993372010', 'komarudin', 'bandung', '1988-10-09', 'islam', 'cikoneng', 'l', 'default.jpg'),
+('9999999998', 'John Doe', 'Kansas', '1999-12-14', 'kristen', 'Ciomas', 'l', ''),
+('9999999999', 'Ahmad John', 'Bogor', '1998-12-14', 'islam', 'bojong sari', 'l', '');
 
 -- --------------------------------------------------------
 
@@ -270,6 +306,14 @@ ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
+-- Indexes for table `kelas_siswa`
+--
+ALTER TABLE `kelas_siswa`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_kelas` (`id_kelas`),
+  ADD KEY `nisn` (`nisn`);
+
+--
 -- Indexes for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
@@ -323,6 +367,18 @@ ALTER TABLE `user_token`
 --
 
 --
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id_kelas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `kelas_siswa`
+--
+ALTER TABLE `kelas_siswa`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
@@ -367,6 +423,13 @@ ALTER TABLE `user_token`
 --
 ALTER TABLE `detail_nilai`
   ADD CONSTRAINT `detail_nilai_ibfk_1` FOREIGN KEY (`kode_mapel`) REFERENCES `mata_pelajaran` (`kode_mapel`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `kelas_siswa`
+--
+ALTER TABLE `kelas_siswa`
+  ADD CONSTRAINT `kelas_siswa_ibfk_1` FOREIGN KEY (`nisn`) REFERENCES `siswa` (`nisn`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `kelas_siswa_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `nilai`
