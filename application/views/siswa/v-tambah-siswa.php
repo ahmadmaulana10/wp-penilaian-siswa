@@ -13,7 +13,7 @@
                         <div class="form-group row">
                             <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="nisn" value="<?= set_value('nisn'); ?>" placeholder="Ketik NISN. . .">
+                                <input type="text" class="form-control" name="nisn" value="<?= set_value('nisn'); ?>" placeholder="Ketik NISN . . .">
                                 <?= form_error('nisn', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                         <div class="form-group row">
                             <label for="nama_siswa" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="nama_siswa" value="<?= set_value('nama_siswa'); ?>" placeholder="Ketik Nama lengkap. . .">
+                                <input type="text" class="form-control" name="nama_siswa" value="<?= set_value('nama_siswa'); ?>" placeholder="Ketik Nama lengkap . . .">
                                 <?= form_error('nama_siswa', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                         <div class="form-group row">
                             <label for="tempat_lahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="tempat_lahir" value="<?= set_value('tempat_lahir'); ?>" placeholder="Ketik Tempat Lahir. . . ">
+                                <input type="text" class="form-control" name="tempat_lahir" value="<?= set_value('tempat_lahir'); ?>" placeholder="Ketik Tempat Lahir . . . ">
                                 <?= form_error('tempat_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -43,9 +43,24 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="agama" class="col-sm-2 col-form-label">Agama</label>
+                            <div class="col-sm-8">
+                                <select name="agama" id="agama" class="form-control form-control-user">
+                                    <option value="" <?= set_select('agama', ''); ?>> Pilih Agama . . . </option>
+                                    <option value="islam" <?= set_select('agama', 'islam'); ?>>Islam</option>
+                                    <option value="kristen" <?= set_select('agama', 'kristen'); ?>>Kristen</option>
+                                    <option value="hindu" <?= set_select('agama', 'hindu'); ?>>Hindu</option>
+                                    <option value="budha" <?= set_select('agama', 'budha'); ?>>Budha</option>
+                                    <option value="konghucu" <?= set_select('agama', 'konghucu'); ?>>Konghucu</option>
+                                </select>
+                                <?= form_error('agama', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="alamat" value="<?= set_value('alamat'); ?>" placeholder="Ketik Alamat. . . ">
+                                <input type="text" class="form-control" name="alamat" value="<?= set_value('alamat'); ?>" placeholder="Ketik Alamat . . . ">
                                 <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>

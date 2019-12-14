@@ -23,6 +23,10 @@
                                 <td><?= $siswa['tgl_lahir']; ?></td>
                             </tr>
                             <tr>
+                                <td>Agama</td>
+                                <td><?= ucwords($siswa['agama']); ?></td>
+                            </tr>
+                            <tr>
                                 <td>Alamat</td>
                                 <td><?= ucwords($siswa['alamat']); ?></td>
                             </tr>

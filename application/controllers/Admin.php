@@ -370,6 +370,10 @@ class Admin extends CI_Controller
                'required' => 'Tanggal Lahir harus diisi !'
           ]);
 
+          $this->form_validation->set_rules('agama', 'Tanggal Lahir', 'required|trim', [
+               'required' => 'Agama harus dipilih !'
+          ]);
+
           $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
                'required' => 'Alamat harus diisi !',
           ]);
@@ -420,6 +424,7 @@ class Admin extends CI_Controller
                     'nama_siswa' => $this->input->post('nama_siswa', true),
                     'tempat_lahir' => $this->input->post('tempat_lahir', true),
                     'tgl_lahir' => $this->input->post('tgl_lahir', true),
+                    'agama' => $this->input->post('agama', true),
                     'alamat' => $this->input->post('alamat', true),
                     'jk' => $this->input->post('jk', true),
                     'gambar' => $upload_gambar
