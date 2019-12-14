@@ -7,10 +7,10 @@
                <div class="container-fluid">
                     <div class="header-wrap">
                          <form class="form-header" action="" method="POST">
-                              <input class="au-input au-input--xl" type="text" name="search" placeholder="Cari sesuatu . . ." />
+                              <!-- <input class="au-input au-input--xl" type="text" name="search" placeholder="Cari sesuatu . . ." />
                               <button class="au-btn--submit" type="submit">
                                    <i class="zmdi zmdi-search"></i>
-                              </button>
+                              </button> -->
                          </form>
                          <div class="header-button">
                               <div class="noti-wrap">
