@@ -426,8 +426,9 @@ class Admin extends CI_Controller
                     'tgl_lahir' => $this->input->post('tgl_lahir', true),
                     'agama' => $this->input->post('agama', true),
                     'alamat' => $this->input->post('alamat', true),
-                    'jk' => $this->input->post('jk', true)
-                    
+                    'jk' => $this->input->post('jk', true),
+                    'gambar' => $upload_gambar
+
                ];
 
                $this->load->library('upload', $config);
@@ -479,34 +480,35 @@ class Admin extends CI_Controller
                $this->load->view('siswa/v-ubah-siswa', $data);
                $this->load->view('templates/footer');
           } else {
-               $upload_gambar = $_FILES['gambar']['nama'];
-               if ($upload_gambar) {
-                    $config['upload_path'] = './assets/img/profile/';
-                    $config['allowed_types'] = 'gif|jpg|png';
-                    $config['max_size'] = '3000';
-                    $config['max_width'] = '1024';
-                    $config['max_height'] = '1000';
-                    $config['file_name'] = 'pro' . time();
-                    $this->load->library('upload', $config);
-                    if ($this->upload->do_upload('gambar')) {
-                         $gambar_lama = $data['user']['gambar'];
-                         if ($gambar_lama != 'default.jpg') {
-                              unlink(FCPATH . 'assets/img/profile/' . $gambar_lama);
-                         }
-                         $gambar_baru = $this->upload->data('file_name');
-                         $this->db->set('gambar', $gambar_baru);
-                    } else {
-                         echo $this->upload->display_errors();
-                    }
-               }
+               // $upload_gambar = $_FILES['gambar']['nama'];
+               // if ($upload_gambar) {
+               //      $config['upload_path'] = './assets/img/profile/';
+               //      $config['allowed_types'] = 'gif|jpg|png';
+               //      $config['max_size'] = '3000';
+               //      $config['max_width'] = '1024';
+               //      $config['max_height'] = '1000';
+               //      $config['file_name'] = 'pro' . time();
+               //      $this->load->library('upload', $config);
+               //      if ($this->upload->do_upload('gambar')) {
+               //           $gambar_lama = $data['user']['gambar'];
+               //           if ($gambar_lama != 'default.jpg') {
+               //                unlink(FCPATH . 'assets/img/profile/' . $gambar_lama);
+               //           }
+               //           $gambar_baru = $this->upload->data('file_name');
+               //           $this->db->set('gambar', $gambar_baru);
+               //      } else {
+               //           echo $this->upload->display_errors();
+               //      }
+               // }
                $data = [
                     'nisn' => $this->input->post('nisn', true),
                     'nama_siswa' => $this->input->post('nama_siswa', true),
                     'tempat_lahir' => $this->input->post('tempat_lahir', true),
                     'tgl_lahir' => $this->input->post('tgl_lahir', true),
+                    'agama' => $this->input->post('agama', true),
                     'alamat' => $this->input->post('alamat', true),
                     'jk' => $this->input->post('jk', true),
-                    'gambar' => $upload_gambar
+
                ];
 
                $this->ModelSiswa->updateSiswa($data);

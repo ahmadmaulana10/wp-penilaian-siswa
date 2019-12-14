@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class ModelSiswa extends CI_Model
 {
 
-    public function getSiswaById($nisn = 'nisn')
+    public function getSiswaById($nisn)
     {
         return $this->db->get_where('siswa', ['nisn' => $nisn])->row_array();
     }

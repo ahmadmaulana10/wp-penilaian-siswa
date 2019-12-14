@@ -43,6 +43,21 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="role_id" class="col-sm-2 col-form-label">Agama</label>
+                            <div class="col-sm-5">
+                                <select name="agama" class="form-control form-control-user">
+                                    <option value="">--Pilih Agama--</option>
+                                    <option value="1">Islam</option>
+                                    <option value="2">Kristen</option>
+                                    <option value="3">Hindu</option>
+                                    <option value="4">Budha</option>
+                                    <option value="5">Konghucu</option>
+                                </select>
+                                <?= form_error('agama', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="alamat" value="<?= $siswa['alamat']; ?>" placeholder="Ketik Alamat. . . ">
