@@ -20,9 +20,8 @@
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">nisn</th>
-                                    <th>nama siswa</th>
+                                    <th class="text-center">nama siswa</th>
                                     <th class="text-center">tanggal lahir</th>
-                                    <!-- <th class="text-center">agama</th> -->
                                     <th class="text-center">alamat</th>
                                     <th class="text-center">jenis kelamin</th>
                                     <th class="text-center">aksi</th>

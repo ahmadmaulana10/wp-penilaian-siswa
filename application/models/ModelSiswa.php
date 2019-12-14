@@ -19,6 +19,11 @@ class ModelSiswa extends CI_Model
         return $this->db->get('siswa', $limit, $start)->result_array();
     }
 
+    public function updateSiswa($data = 'siswa', $where = null)
+    {
+        $this->db->update('siswa', $data, $where);
+    }
+
     public function simpanData($data = null)
     {
         $this->db->insert('siswa', $data);
