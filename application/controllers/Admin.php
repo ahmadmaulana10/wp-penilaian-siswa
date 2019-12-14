@@ -351,28 +351,31 @@ class Admin extends CI_Controller
           $data['user']  = $this->ModelAdmin->getTopbarName();
 
           $this->form_validation->set_rules('nisn', 'NISN', 'required|min_length[8]|numeric', [
-               'required' => 'Nama harus diisi',
-               'min_length' => 'Nama terlalu pendek',
-               'numeric' => 'Harus angka!'
-          ]);
-          $this->form_validation->set_rules('nama_siswa', 'Nama Siswa', 'required|min_length[3]', [
-               'required' => 'Nama siswa harus diisi',
-               'min_length' => 'Nama siswa terlalu pendek'
+               'required' => 'NISN harus diisi !',
+               'min_length' => 'NISN terlalu pendek !',
+               'numeric' => 'Harus angka !'
           ]);
 
-          $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required', [
-               'required' => 'Tempat Lahir harus diisi',
+          $this->form_validation->set_rules('nama_siswa', 'Nama Siswa', 'required|min_length[3]', [
+               'required' => 'Nama siswa harus diisi !',
+               'min_length' => 'Nama siswa terlalu pendek !'
           ]);
+
+          $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|min_length[5]', [
+               'required' => 'Tempat Lahir harus diisi !',
+               'min_length' => 'Tempat Lahir terlalu pendek!'
+          ]);
+
           $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim', [
-               'required' => 'Tanggal Lahir harus diisi!'
+               'required' => 'Tanggal Lahir harus diisi !'
           ]);
 
           $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
-               'required' => 'Alamat harus diisi!',
+               'required' => 'Alamat harus diisi !',
           ]);
 
           $this->form_validation->set_rules('jk', 'JK', 'required|max_length[1]', [
-               'required' => 'JK harus diisi!',
+               'required' => 'Jenis Kelamin harus diisi !',
                'max_length' => 'Hanya L atau P'
           ]);
 
@@ -421,6 +424,7 @@ class Admin extends CI_Controller
                     'jk' => $this->input->post('jk', true),
                     'gambar' => $upload_gambar
                ];
+
                $this->load->library('upload', $config);
                $this->ModelSiswa->simpanData($data);
 

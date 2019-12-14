@@ -13,7 +13,7 @@
                         <div class="form-group row">
                             <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="nisn" name="nisn" value="<?= set_value('nisn'); ?>" placeholder="Ketik NISN. . .">
+                                <input type="text" class="form-control" name="nisn" value="<?= set_value('nisn'); ?>" placeholder="Ketik NISN. . .">
                                 <?= form_error('nisn', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                         <div class="form-group row">
                             <label for="nama_siswa" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="nama_siswa" name="nama_siswa" value="<?= set_value('nama_siswa'); ?>" placeholder="Ketik Nama lengkap. . .">
+                                <input type="text" class="form-control" name="nama_siswa" value="<?= set_value('nama_siswa'); ?>" placeholder="Ketik Nama lengkap. . .">
                                 <?= form_error('nama_siswa', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                         <div class="form-group row">
                             <label for="tempat_lahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="<?= set_value('tempat_lahir'); ?>" placeholder="Ketik Tempat Lahir. . . ">
+                                <input type="text" class="form-control" name="tempat_lahir" value="<?= set_value('tempat_lahir'); ?>" placeholder="Ketik Tempat Lahir. . . ">
                                 <?= form_error('tempat_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <label for="tgl_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                             <div class="col-sm-8">
-                                <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir">
+                                <input type="date" id="date" class="form-control" name="tgl_lahir" value="<?= date("Y-m-d"); ?>">
                                 <?= form_error('tgl_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -45,16 +45,21 @@
                         <div class="form-group row">
                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?= set_value('alamat'); ?>" placeholder="Ketik Alamat. . . ">
+                                <input type="text" class="form-control" name="alamat" value="<?= set_value('alamat'); ?>" placeholder="Ketik Alamat. . . ">
                                 <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="jk" class="col-sm-2 col-form-label">JK</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="jk" name="jk" value="<?= set_value('jk'); ?>" placeholder="Ketik Jenis Kelamin. . . ">
-                                <?= form_error('jk', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label for="jk" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                            <div class="col-sm-8 ml-2">
+                                <label class="col-sm-2 col-form-label">
+                                    <input type="radio" name="jk" value="l" class="form-check-input" <?= set_radio('jk', 'l'); ?>>Laki-Laki
+                                </label>
+                                <label class="col-sm-2 col-form-label">
+                                    <input type="radio" name="jk" value="p" class="form-check-input" <?= set_radio('jk', 'p'); ?>>Perempuan
+                                </label><br>
+                                <?= form_error('jk', '<small class="text-danger ml-2">', '</small>'); ?>
                             </div>
                         </div>
 
@@ -62,7 +67,7 @@
                             <div class="col-sm-2">Gambar</div>
                             <div class="col-sm-8">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="gambar" name="gambar">
+                                    <input type="file" class="custom-file-input" name="gambar">
                                     <label class="custom-file-label" for="gambar">Pilih file</label>
                                 </div>
                             </div>
@@ -74,7 +79,7 @@
                                     <i class="fas fa-plus"></i> Tambah
                                 </button>
 
-                                <a href="<?= base_url('admin/data-user'); ?>" class="btn btn-dark pl-3 pr-3" onclick="window.history.go(-1)">
+                                <a href="<?= base_url('admin/data-siswa'); ?>" class="btn btn-dark pl-3 pr-3" onclick="window.history.go(-1)">
                                     <i class="fa fa-arrow-left"></i> Kembali
                                 </a>
                             </div>

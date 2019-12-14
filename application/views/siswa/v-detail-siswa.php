@@ -27,8 +27,8 @@
                                 <td><?= ucwords($siswa['alamat']); ?></td>
                             </tr>
                             <tr>
-                                <td>JK</td>
-                                <td><?= ucwords($siswa['jk']); ?></td>
+                                <td>Jenis Kelamin</td>
+                                <td><?= $siswa['jk'] == "l" ? "Laki-Laki" : "Perempuan"; ?></td>
                             </tr>
                             <tr>
                                 <td>Gambar</td>
