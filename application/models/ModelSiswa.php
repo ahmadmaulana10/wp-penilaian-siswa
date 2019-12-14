@@ -18,4 +18,15 @@ class ModelSiswa extends CI_Model
     {
         return $this->db->get('siswa', $limit, $start)->result_array();
     }
+
+    public function simpanData($data = null)
+    {
+        $this->db->insert('siswa', $data);
+    }
+
+    public function hapusSiswa($nisn)
+    {
+        $this->db->where('nisn', $nisn);
+        $this->db->delete('siswa');
+    }
 }

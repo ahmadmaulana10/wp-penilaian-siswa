@@ -4,7 +4,7 @@
             <div class="row">
 
                 <div class="col-12 ml-2">
-                    <?= $this->session->flashdata('pesan'); ?>
+                    <?= $this->session->flashdata('message'); ?>
                     <h1 class="h3 mb-4 text-gray-800 mb-5"><?= $title; ?></h1>
                     <div class="col-lg-11">
 
