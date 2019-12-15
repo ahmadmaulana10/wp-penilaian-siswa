@@ -38,7 +38,8 @@
 
 
 <!-- Jquery JS-->
-<script src="<?= base_url('assets/') ?>vendor/jquery-3.2.1.min.js"></script>
+
+<script src="<?= base_url('assets/') ?>vendor/jquery-3.4.1.js"></script>
 <!-- Bootstrap JS-->
 <script src="<?= base_url('assets/') ?>vendor/bootstrap-4.1/popper.min.js"></script>
 <script src="<?= base_url('assets/') ?>vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -68,6 +69,80 @@
      });
 </script>
 
+<script>
+     // event ketika tombol Cari di klik
+     $('#search').on('click', function() {
+          let nisn = $('#search_value').val();
+          $.ajax({
+               url: `<?= base_url('admin/siswa'); ?>` + '/' + nisn,
+               type: 'post',
+               dataType: 'json',
+
+
+               success: function(data) {
+                    let siswa = data.siswa;
+                    if (siswa.jk == 'l') {
+                         siswa.jk = 'Laki-Laki';
+                    } else if (siswa.jk == 'p') {
+                         siswa.jk = 'Perempuan';
+
+                    }
+                    $('#hasil_cari').html(`
+                    <table class="table table-bordered table-data3">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">nisn</th>
+                                    <th class="text-center">nama siswa</th>
+                                    <th class="text-center">tanggal lahir</th>
+                                    <th class="text-center">alamat</th>
+                                    <th class="text-center">jenis kelamin</th>
+                                    <th class="text-center">aksi</th>
+                                </tr>
+                            </thead>
+                                <tbody>
+                                    <tr>
+                                        <td align="center">1</td>
+                                        <td>` + siswa.nisn + `</td>
+                                        <td>` + siswa.nama_siswa + `</td>
+                                        <td>` + siswa.tgl_lahir + `</td>
+                                        <td>` + siswa.alamat + `</td>
+                                        <td>` + siswa.jk + `</td>
+                                        <td>
+                                            <div class="table-data-feature">
+                                                <a href="<?= base_url('admin/detail_siswa/'); ?>` + siswa.nisn + `" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
+                                                    <i class="zmdi zmdi-more"></i>
+                                                </a>
+                                                <a href="<?= base_url('admin/ubah_siswa/'); ?>` + siswa.nisn + `" class="item" data-toggle="tooltip" data-placement="top" title="Ubah">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </a>
+                                                <button class="item" onclick="
+                                                    // validasi ketika tombol hapus diklik
+                                                    if (confirm('Yakin mau dihapus ?')) {
+                                                        window.location.href = '<?= base_url('admin/hapus_siswa/'); ?>` + siswa.nisn + `';
+                                                    }
+                                                    " data-toggle="tooltip" data-placement="top" title="Hapus">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                
+                                </tbody>
+                        </table>
+                    `);
+
+               }
+
+               // error: function() {
+               //      return;
+               // }
+
+
+
+          });
+     });
+</script>
 </body>
 
 </html>
