@@ -43,7 +43,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar');
+               $this->load->view('templates/admin_sidebar');
                $this->load->view('templates/topbar', $data);
                $this->load->view('admin/ubah-profil', $data);
                $this->load->view('templates/footer');
@@ -115,11 +115,11 @@ class Admin extends CI_Controller
 
                if (!password_verify($passlama, $data['user']['password'])) {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password lama salah!</div>');
-                    redirect('user/ubahPassword');
+                    redirect('admin/ubahPassword');
                } else {
                     if ($passlama == $passbaru) {
                          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password tidak boleh sama!</div>');
-                         redirect('user/ubahPassword');
+                         redirect('admin/ubahPassword');
                     } else {
                          // Password ok
                          $passhash = password_hash($passbaru, PASSWORD_DEFAULT);
@@ -129,7 +129,7 @@ class Admin extends CI_Controller
                          $this->db->update('user');
 
                          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah!</div>');
-                         redirect('user/ubahPassword');
+                         redirect('admin/ubahPassword');
                     }
                }
           }

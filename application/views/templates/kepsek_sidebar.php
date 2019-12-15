@@ -28,6 +28,11 @@
                          <hr>
 
                          <li>
+                              <a href="<?= base_url('kepsek/ubah_profil'); ?>">
+                                   <i class="fas fa-fw fa-gears"></i>Ubah Profil</a>
+                         </li>
+
+                         <li>
                               <a href="<?= base_url('kepsek/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>
                          </li>
@@ -75,6 +80,10 @@
 
                          <hr>
 
+                         <li>
+                              <a href="<?= base_url('kepsek/ubah_profil'); ?>">
+                                   <i class="fas fa-fw fa-user"></i>Ubah Profil</a>
+                         </li>
                          <li>
                               <a href="<?= base_url('kepsek/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>

@@ -32,6 +32,10 @@
                                    <i class="fas fa-fw fa-users"></i>Data User</a>
                          </li>
                          <li>
+                              <a href="<?= base_url('admin/ubah_profil'); ?>">
+                                   <i class="fas fa-fw fa-user"></i>Ubah Profil</a>
+                         </li>
+                         <li>
                               <a href="<?= base_url('admin/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>
                          </li>
@@ -82,6 +86,10 @@
                          <li>
                               <a href="<?= base_url('admin/data_user'); ?>">
                                    <i class="fas fa-fw fa-users"></i>Data User</a>
+                         </li>
+                         <li>
+                              <a href="<?= base_url('admin/ubah_profil'); ?>">
+                                   <i class="fas fa-fw fa-user"></i>Ubah Profil</a>
                          </li>
                          <li>
                               <a href="<?= base_url('admin/ubahPassword'); ?>">

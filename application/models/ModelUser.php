@@ -56,7 +56,6 @@ class ModelUser extends CI_Model
           return $this->db->get('user')->num_rows();
      }
 
-
      public function getUserByEmail($email)
      {
           return $this->db->get_where('user', ['email' => $email])->row_array();
