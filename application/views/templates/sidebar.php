@@ -43,7 +43,7 @@
                                    <i class="fas fa-fw fa-university"></i>Data Guru</a>
                          </li>
                          <li>
-                              <a href="<?= base_url('admin/data_nilai'); ?>">
+                              <a href="<?= base_url('nilai/data_nilai'); ?>">
                                    <i class="fas fa-fw fa-folder"></i>Data Nilai</a>
                          </li>
 
@@ -95,7 +95,7 @@
                                    <i class="fas fa-fw fa-university"></i>Data Guru</a>
                          </li>
                          <li>
-                              <a href="<?= base_url('admin/data_nilai'); ?>">
+                              <a href="<?= base_url('nilai/data_nilai'); ?>">
                                    <i class="fas fa-fw fa-folder"></i>Data Nilai</a>
                          </li>
 
