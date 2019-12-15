@@ -494,6 +494,12 @@ class Admin extends CI_Controller
           }
      }
 
+     public function siswa($nisn)
+     {
+          $detail['siswa']  = $this->ModelSiswa->getSiswaById($nisn);
+          echo json_encode($detail);
+     }
+
      public function data_siswa()
      {
           $data['title'] = "Data Siswa";

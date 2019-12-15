@@ -7,14 +7,28 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group row justify-content-end">
-                        <div class="col-sm">
-                            <a href="<?= base_url('admin/tambah_siswa'); ?>" class="btn btn-success mb-3">
-                                <i class="fas fa-siswa-plus"></i> Tambah siswa
+                        <div class="col-sm-7">
+                            <a href="<?= base_url('admin/tambah_siswa'); ?>" class="btn btn-dark mb-3 mr-5">
+                                <i class="fas fa-plus"></i> Tambah Siswa
                             </a>
                         </div>
+
+                        <div class="col-sm-5">
+                            <div class="row form-group">
+                                <div class="col col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" id="search_value" name="cari" placeholder="Cari berdasarkan NISN . . ." class="form-control">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-primary" id="search"><i class="fas fa-search"></i> Cari</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <!-- DATA TABLE-->
-                    <div class="table-responsive table-earning">
+                    <div class="table-responsive table-earning" id="hasil_cari">
                         <table class="table table-bordered table-data3">
                             <thead>
                                 <tr>
