@@ -31,6 +31,7 @@
                                     <th class="text-center">nisn</th>
                                     <th class="text-center">nama siswa</th>
                                     <th class="text-center">kelas</th>
+                                    <th class="text-center">jenis kelamin</th>
                                     <th class="text-center">aksi</th>
                                 </tr>
                             </thead>
@@ -42,7 +43,8 @@
                                         <td align="center"><?= ++$start; ?></td>
                                         <td><?= $siswas['nisn']; ?></td>
                                         <td><?= ucwords($siswas['nama_siswa']); ?></td>
-                                        <td></td>
+                                        <td>kelas</td>
+                                        <td>jenis kelamin</td>
                                         <!-- <td><?= $siswas['kelas']; ?></td> -->
                                         <td>
                                             <div class="table-data-feature">
