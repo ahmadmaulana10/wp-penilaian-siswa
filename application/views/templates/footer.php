@@ -87,6 +87,22 @@
                          siswa.jk = 'Perempuan';
 
                     }
+
+                    //membuat huruf pertama kapital
+                    const capitalize = (s) => {
+                         if (typeof s !== 'string') return ''
+                         return s.charAt(0).toUpperCase() + s.slice(1)
+                    }
+
+
+                    const format = (s) => {
+                         if (typeof s !== 'string') return ''
+                         let tahun = s.substring(0, 4)
+                         let bulan = s.substring(5, 7)
+                         let tgl = s.substring(8, 10)
+                         return tgl + '-' + bulan + '-' + tahun
+                    }
+
                     $('#hasil_cari').html(`
                     <table class="table table-bordered table-data3">
                             <thead>
@@ -104,9 +120,9 @@
                                     <tr>
                                         <td align="center">1</td>
                                         <td>` + siswa.nisn + `</td>
-                                        <td>` + siswa.nama_siswa + `</td>
-                                        <td>` + siswa.tgl_lahir + `</td>
-                                        <td>` + siswa.alamat + `</td>
+                                        <td>` + capitalize(siswa.nama_siswa) + `</td>
+                                        <td>` + format(siswa.tgl_lahir) + `</td>
+                                        <td>` + capitalize(siswa.alamat) + `</td>
                                         <td>` + siswa.jk + `</td>
                                         <td>
                                             <div class="table-data-feature">
