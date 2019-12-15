@@ -48,11 +48,11 @@
                                 <div class="col-sm-5">
                                     <select name="agama" class="form-control form-control-user">
                                         <option value="">--Pilih Agama--</option>
-                                        <option value="islam">Islam</option>
-                                        <option value="kristen">Kristen</option>
-                                        <option value="hindu">Hindu</option>
-                                        <option value="budha">Budha</option>
-                                        <option value="konghucu">Konghucu</option>
+                                        <option value="islam" <?= $siswa['agama'] == "islam" ? "selected='selected'" : ""  ?>>Islam</option>
+                                        <option value="kristen" <?= $siswa['agama'] == "kristen" ? "selected='selected'" : ""  ?>>Kristen</option>
+                                        <option value="hindu" <?= $siswa['agama'] == "hindu" ? "selected='selected'" : ""  ?>>Hindu</option>
+                                        <option value="budha" <?= $siswa['agama'] == "budha" ? "selected='selected'" : ""  ?>>Budha</option>
+                                        <option value="konghucu" <?= $siswa['agama'] == "konghucu" ? "selected='selected'" : ""  ?>>Konghucu</option>
                                     </select>
                                     <?= form_error('agama', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
@@ -70,10 +70,10 @@
                                 <label for="jk" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                 <div class="col-sm-8 ml-2">
                                     <label class="col-sm-2 col-form-label">
-                                        <input type="radio" name="jk" value="l" class="form-check-input" <?= set_radio('jk', 'l'); ?>>Laki-Laki
+                                        <input type="radio" name="jk" value="l" class="form-check-input" <?= set_value('jk', $siswa['jk']) == "l" ? "checked" : ""; ?>>Laki-Laki
                                     </label>
                                     <label class="col-sm-2 col-form-label">
-                                        <input type="radio" name="jk" value="p" class="form-check-input" <?= set_radio('jk', 'p'); ?>>Perempuan
+                                        <input type="radio" name="jk" value="p" class="form-check-input" <?= set_value('jk', $siswa['jk']) == "p" ? "checked" : ""; ?>>Perempuan
                                     </label><br>
                                     <?= form_error('jk', '<small class="text-danger ml-2">', '</small>'); ?>
                                 </div>
