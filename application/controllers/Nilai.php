@@ -94,7 +94,7 @@ class Nilai extends CI_Controller
             $data = [
                 'indonesia' => $this->input->post('indonesia', true),
                 'matematika' => $this->input->post('matematika', true),
-                'ipa' => $this->input->post('ipa', true),
+                'ipa' => $this->input->post('ipa', true)
             ];
 
             $this->ModelNilai->ubahNilai($data);

@@ -16,12 +16,18 @@ class ModelNilai extends CI_Model
     public function ubahNilai()
     {
         $data = [
-            'indonesia'     => $this->input->post('indonesia', true),
-            'matematika'    => $this->input->post('matematika', true),
-            'ipa'           => $this->input->post('ipa', true)
+            'indonesia'     => $this->input->post('indonesia', TRUE),
+            'matematika'    => $this->input->post('matematika', TRUE),
+            'ipa'           => $this->input->post('ipa', TRUE)
         ];
+
 
         $this->db->where('nisn', $this->input->post('nisn'));
         $this->db->update('siswa', $data);
+    }
+
+    public function updateNilai($data = 'siswa', $where = null)
+    {
+        $this->db->update('siswa', $data, $where);
     }
 }

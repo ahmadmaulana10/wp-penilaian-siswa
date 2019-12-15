@@ -10,6 +10,7 @@
 
                         <form action="" method="post">
                             <?= form_open_multipart('nilai/ubah_nilai'); ?>
+                            <input type="hidden" name="nisn" value="<?= $siswa['nisn']; ?>">
                             <div class="form-group row">
                                 <label for="indonesia" class="col-sm-3 col-form-label">Bahasa Indonesia</label>
                                 <div class="col-sm-8">
