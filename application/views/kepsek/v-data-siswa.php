@@ -30,10 +30,9 @@
                                     <th class="text-center">No</th>
                                     <th class="text-center">nisn</th>
                                     <th class="text-center">nama siswa</th>
-                                    <th class="text-center">kelas</th>
-                                    <th class="text-center">B. indonesia</th>
-                                    <th class="text-center">matematika</th>
-                                    <th class="text-center">ipa</th>
+                                    <th class="text-center">tanggal lahir</th>
+                                    <th class="text-center">alamat</th>
+                                    <th class="text-center">jenis kelamin</th>
                                     <th class="text-center">aksi</th>
                                 </tr>
                             </thead>
@@ -45,17 +44,13 @@
                                         <td align="center"><?= ++$start; ?></td>
                                         <td><?= $siswas['nisn']; ?></td>
                                         <td><?= ucwords($siswas['nama_siswa']); ?></td>
-                                        <td><?= $siswas['kelas']; ?></td>
-                                        <td><?= $siswas['indonesia']; ?></td>
-                                        <td><?= $siswas['matematika']; ?></td>
-                                        <td><?= $siswas['ipa']; ?></td>
+                                        <td><?= date('d-m-Y', strtotime($siswas['tgl_lahir'])); ?></td>
+                                        <td><?= ucwords($siswas['alamat']); ?></td>
+                                        <td><?= $siswas['jk'] == "l" ? "Laki-Laki" : "Perempuan"; ?></td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <a href="<?= base_url('nilai/detail_nilai/') . $siswas['nisn']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
+                                                <a href="<?= base_url('kepsek/detail_siswa/') . $siswas['nisn']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
                                                     <i class="zmdi zmdi-more"></i>
-                                                </a>
-                                                <a href="<?= base_url('nilai/ubah_nilai/') . $siswas['nisn']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Ubah">
-                                                    <i class="zmdi zmdi-edit"></i>
                                                 </a>
                                             </div>
                                         </td>

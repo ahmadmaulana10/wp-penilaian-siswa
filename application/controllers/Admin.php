@@ -159,7 +159,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/admin_sidebar', $data);
                $this->load->view('templates/topbar');
                $this->load->view('admin/v-ubah-user', $data);
                $this->load->view('templates/footer');
@@ -286,7 +286,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar');
+               $this->load->view('templates/admin_sidebar');
                $this->load->view('templates/topbar');
                $this->load->view('admin/v-tambah-user', $data);
                $this->load->view('templates/footer');
@@ -347,6 +347,10 @@ class Admin extends CI_Controller
                'required' => 'Alamat harus diisi !',
           ]);
 
+          $this->form_validation->set_rules('kelas', 'Kelas', 'required', [
+               'required' => 'Kelas harus dipilih !',
+          ]);
+
           $this->form_validation->set_rules('jk', 'JK', 'required|max_length[1]', [
                'required' => 'Jenis Kelamin harus diisi !',
                'max_length' => 'Hanya L atau P'
@@ -354,7 +358,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar');
+               $this->load->view('templates/admin_sidebar');
                $this->load->view('templates/topbar');
                $this->load->view('siswa/v-tambah-siswa', $data);
                $this->load->view('templates/footer');
@@ -366,6 +370,10 @@ class Admin extends CI_Controller
                     'tgl_lahir' => $this->input->post('tgl_lahir', true),
                     'agama' => $this->input->post('agama', true),
                     'alamat' => $this->input->post('alamat', true),
+                    'kelas' => $this->input->post('kelas', true),
+                    'indonesia' => 0,
+                    'matematika' => 0,
+                    'ipa' => 0,
                     'jk' => $this->input->post('jk', true),
                     'gambar' => 'default.jpg'
                ];
@@ -404,6 +412,10 @@ class Admin extends CI_Controller
                'required' => 'Alamat harus diisi !',
           ]);
 
+          $this->form_validation->set_rules('kelas', 'Kelas', 'required', [
+               'required' => 'Kelas harus dipilih !',
+          ]);
+
           $this->form_validation->set_rules('jk', 'JK', 'required|max_length[1]', [
                'required' => 'Jenis Kelamin harus diisi !',
                'max_length' => 'Hanya L atau P'
@@ -422,6 +434,7 @@ class Admin extends CI_Controller
                     'tgl_lahir' => $this->input->post('tgl_lahir', true),
                     'agama' => $this->input->post('agama', true),
                     'alamat' => $this->input->post('alamat', true),
+                    'kelas' => $this->input->post('kelas', true),
                     'jk' => $this->input->post('jk', true),
                ];
 
@@ -589,7 +602,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar');
+               $this->load->view('templates/admin_sidebar');
                $this->load->view('templates/topbar');
                $this->load->view('guru/v-tambah-guru', $data);
                $this->load->view('templates/footer');
@@ -647,7 +660,7 @@ class Admin extends CI_Controller
           ]);
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/admin_sidebar', $data);
                $this->load->view('templates/topbar');
                $this->load->view('guru/v-ubah-guru', $data);
                $this->load->view('templates/footer');

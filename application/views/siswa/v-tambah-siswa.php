@@ -66,6 +66,19 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="kelas" class="col-sm-2 col-form-label">Kelas</label>
+                            <div class="col-sm-8">
+                                <select name="kelas" id="" class="form-control">
+                                    <option value="" <?= set_select('kelas', ''); ?>> Pilih Kelas . . . </option>
+                                    <option value="I" <?= set_select('kelas', 'I'); ?>> Kelas I </option>
+                                    <option value="II" <?= set_select('kelas', 'II'); ?>> Kelas II </option>
+                                    <option value="III" <?= set_select('kelas', 'III'); ?>> Kelas III </option>
+                                </select>
+                                <?= form_error('kelas', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="jk" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                             <div class="col-sm-8 ml-2">
                                 <label class="col-sm-2 col-form-label">

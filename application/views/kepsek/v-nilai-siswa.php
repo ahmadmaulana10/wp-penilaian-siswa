@@ -51,11 +51,8 @@
                                         <td><?= $siswas['ipa']; ?></td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <a href="<?= base_url('nilai/detail_nilai/') . $siswas['nisn']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
+                                                <a href="<?= base_url('kepsek/detail_nilai/') . $siswas['nisn']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
                                                     <i class="zmdi zmdi-more"></i>
-                                                </a>
-                                                <a href="<?= base_url('nilai/ubah_nilai/') . $siswas['nisn']; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Ubah">
-                                                    <i class="zmdi zmdi-edit"></i>
                                                 </a>
                                             </div>
                                         </td>

@@ -31,6 +31,7 @@ class ModelSiswa extends CI_Model
             'tgl_lahir' => $this->input->post('tgl_lahir', true),
             'agama' => $this->input->post('agama', true),
             'alamat' => $this->input->post('alamat', true),
+            'kelas' => $this->input->post('kelas', true),
             'jk' => $this->input->post('jk', true),
         ];
 

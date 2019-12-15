@@ -134,4 +134,193 @@ class Kepsek extends CI_Controller
                }
           }
      }
+
+
+     public function data_siswa()
+     {
+          $data['title'] = "Data Siswa";
+          $data['user']  = $this->ModelUser->getTopbarName();
+
+
+          $config['base_url'] = base_url() . 'kepsek/data_siswa';
+          $config['total_rows'] = $this->ModelSiswa->totalRows();
+          $config['per_page'] = 10;
+
+          //styling pagination dengan bootstrap
+          $config['full_tag_open'] = '<nav><ul class="pagination">';
+          $config['full_tag_close'] = '</ul></nav>';
+
+          $config['first_link'] = 'First';
+          $config['first_tag_open'] = '<li class="page-item">';
+          $config['first_tag_close'] = '</li>';
+
+          $config['last_link'] = 'Last';
+          $config['last_tag_open'] = '<li class="page-item">';
+          $config['last_tag_close'] = '</li>';
+
+          $config['next_link'] = '&raquo';
+          $config['next_tag_open'] = '<li class="page-item">';
+          $config['next_tag_close'] = '</li>';
+
+          $config['prev_link'] = '&laquo';
+          $config['prev_tag_open'] = '<li class="page-item">';
+          $config['prev_tag_close'] = '</li>';
+
+          $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+          $config['cur_tag_close'] = '</a></li>';
+
+          $config['num_tag_open'] = '<li class="page-item">';
+          $config['num_tag_close'] = '</li>';
+
+          $config['attributes'] = array('class' => 'page-link');
+
+          $this->pagination->initialize($config);
+
+          $data['start'] = $this->uri->segment(3);
+          $user['siswa']  = $this->ModelSiswa->getUsers($config['per_page'], $data['start']);
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/kepsek_sidebar');
+          $this->load->view('templates/topbar', $data);
+          $this->load->view('kepsek/v-data-siswa', $user);
+          $this->load->view('templates/footer');
+     }
+
+     public function detail_siswa($nisn)
+     {
+          $data['title'] = "Detail User";
+          $data['user']  = $this->ModelAdmin->getTopbarName();
+          $detail['siswa']  = $this->ModelSiswa->getSiswaById($nisn);
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/kepsek_sidebar');
+          $this->load->view('templates/topbar', $data);
+          $this->load->view('kepsek/v-detail-siswa', $detail);
+          $this->load->view('templates/footer');
+     }
+
+     public function data_guru()
+     {
+          $data['title'] = "Data Guru";
+          $data['user']  = $this->ModelUser->getTopbarName();
+
+
+          $config['base_url'] = base_url() . 'kepsek/data_guru';
+          $config['total_rows'] = $this->ModelGuru->totalRows();
+          $config['per_page'] = 10;
+
+          //styling pagination dengan bootstrap
+          $config['full_tag_open'] = '<nav><ul class="pagination">';
+          $config['full_tag_close'] = '</ul></nav>';
+
+          $config['first_link'] = 'First';
+          $config['first_tag_open'] = '<li class="page-item">';
+          $config['first_tag_close'] = '</li>';
+
+          $config['last_link'] = 'Last';
+          $config['last_tag_open'] = '<li class="page-item">';
+          $config['last_tag_close'] = '</li>';
+
+          $config['next_link'] = '&raquo';
+          $config['next_tag_open'] = '<li class="page-item">';
+          $config['next_tag_close'] = '</li>';
+
+          $config['prev_link'] = '&laquo';
+          $config['prev_tag_open'] = '<li class="page-item">';
+          $config['prev_tag_close'] = '</li>';
+
+          $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+          $config['cur_tag_close'] = '</a></li>';
+
+          $config['num_tag_open'] = '<li class="page-item">';
+          $config['num_tag_close'] = '</li>';
+
+          $config['attributes'] = array('class' => 'page-link');
+
+          $this->pagination->initialize($config);
+
+          $data['start'] = $this->uri->segment(3);
+          $data['guru']  = $this->ModelGuru->getUsers($config['per_page'], $data['start']);
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/kepsek_sidebar');
+          $this->load->view('templates/topbar', $data);
+          $this->load->view('kepsek/v-data-guru', $data);
+          $this->load->view('templates/footer');
+     }
+
+     public function detail_guru($nip)
+     {
+          $data['title'] = "Detail Guru";
+          $data['user']  = $this->ModelAdmin->getTopbarName();
+          $detail['guru']  = $this->ModelGuru->getGuruById($nip);
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/admin_sidebar');
+          $this->load->view('templates/topbar', $data);
+          $this->load->view('guru/v-detail-guru', $detail);
+          $this->load->view('templates/footer');
+     }
+
+     public function data_nilai()
+     {
+          $data['user']  = $this->ModelUser->getTopbarName();
+          $data['title'] = "Nilai Siswa";
+
+          $config['base_url'] = base_url() . 'kepsek/data_nilai';
+          $config['total_rows'] = $this->ModelSiswa->totalRows();
+          $config['per_page'] = 10;
+
+          //styling pagination dengan bootstrap
+          $config['full_tag_open'] = '<nav><ul class="pagination">';
+          $config['full_tag_close'] = '</ul></nav>';
+
+          $config['first_link'] = 'First';
+          $config['first_tag_open'] = '<li class="page-item">';
+          $config['first_tag_close'] = '</li>';
+
+          $config['last_link'] = 'Last';
+          $config['last_tag_open'] = '<li class="page-item">';
+          $config['last_tag_close'] = '</li>';
+
+          $config['next_link'] = '&raquo';
+          $config['next_tag_open'] = '<li class="page-item">';
+          $config['next_tag_close'] = '</li>';
+
+          $config['prev_link'] = '&laquo';
+          $config['prev_tag_open'] = '<li class="page-item">';
+          $config['prev_tag_close'] = '</li>';
+
+          $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+          $config['cur_tag_close'] = '</a></li>';
+
+          $config['num_tag_open'] = '<li class="page-item">';
+          $config['num_tag_close'] = '</li>';
+
+          $config['attributes'] = array('class' => 'page-link');
+
+          $this->pagination->initialize($config);
+
+          $data['start'] = $this->uri->segment(3);
+          $user['siswa']  = $this->ModelSiswa->getUsers($config['per_page'], $data['start']);
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/kepsek_sidebar');
+          $this->load->view('templates/topbar');
+          $this->load->view('kepsek/v-nilai-siswa', $user);
+          $this->load->view('templates/footer');
+     }
+
+     public function detail_nilai($nisn)
+     {
+          $data['title'] = "Detail Nilai Siswa";
+          $data['user']  = $this->ModelUser->getTopbarName();
+          $detail['siswa']  = $this->ModelNilai->getSiswaById($nisn);
+
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/kepsek_sidebar');
+          $this->load->view('templates/topbar');
+          $this->load->view('kepsek/v-detail-nilai', $detail);
+          $this->load->view('templates/footer');
+     }
 }

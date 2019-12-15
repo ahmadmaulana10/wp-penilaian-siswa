@@ -66,6 +66,19 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="kelas" class="col-sm-2 col-form-label">Kelas</label>
+                                <div class="col-sm-8">
+                                    <select name="kelas" id="" class="form-control">
+                                        <option value="" <?= $siswa['kelas'] == "" ? "selected='selected'" : ""  ?>> Pilih Kelas . . . </option>
+                                        <option value="I" <?= $siswa['kelas'] == "I" ? "selected='selected'" : ""  ?>> Kelas I </option>
+                                        <option value="II" <?= $siswa['kelas'] == "II" ? "selected='selected'" : ""  ?>> Kelas II </option>
+                                        <option value="III" <?= $siswa['kelas'] == "III" ? "selected='selected'" : ""  ?>> Kelas III </option>
+                                    </select>
+                                    <?= form_error('kelas', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="jk" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                 <div class="col-sm-8 ml-2">
                                     <label class="col-sm-2 col-form-label">
