@@ -672,4 +672,3 @@ class Admin extends CI_Controller
           redirect('admin/data_guru');
      }
 }
-$this->load->library('upload', $config);

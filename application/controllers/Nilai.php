@@ -4,6 +4,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Nilai extends CI_Controller
 {
     public function index()
+    { }
+
+    public function data_nilai()
     {
         $data['user']  = $this->ModelUser->getTopbarName();
         $data['title'] = "Nilai Siswa";
@@ -51,9 +54,4 @@ class Nilai extends CI_Controller
         $this->load->view('siswa/v-nilai-siswa', $user);
         $this->load->view('templates/footer');
     }
-
-    // public function FunctionName(Type $var = null)
-    // {
-    //     # code...
-    // }
 }
