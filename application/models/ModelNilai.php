@@ -13,12 +13,12 @@ class ModelNilai extends CI_Model
         return $this->db->get_where('siswa', ['nisn' => $nisn])->row_array();
     }
 
-    public function ubahNilai($nisn)
+    public function ubahNilai()
     {
         $data = [
-            'indonesia' => $this->input->post('indonesia', true),
-            'matematika' => $this->input->post('matematika', true),
-            'ipa' => $this->input->post('ipa', true),
+            'indonesia'     => $this->input->post('indonesia', true),
+            'matematika'    => $this->input->post('matematika', true),
+            'ipa'           => $this->input->post('ipa', true)
         ];
 
         $this->db->where('nisn', $this->input->post('nisn'));

@@ -15,7 +15,6 @@
                                 <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="nisn" readonly value="<?= $siswa['nisn']; ?>" placeholder="Ketik NISN. . .">
-                                    <!-- <?= form_error('nisn', '<small class="text-danger pl-3">', '</small>'); ?> -->
                                 </div>
                             </div>
 

@@ -18,6 +18,11 @@ class ModelSiswa extends CI_Model
         return $this->db->get('siswa', $limit, $start)->result_array();
     }
 
+    public function getUserWhere($where = null)
+    {
+        return $this->db->get_where('siswa', $where);
+    }
+
     public function ubahSiswa()
     {
         $data = [

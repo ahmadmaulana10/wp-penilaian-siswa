@@ -15,22 +15,6 @@
                                 <td><?= ucwords($siswa['nama_siswa']); ?></td>
                             </tr>
                             <tr>
-                                <td>Tempat Lahir</td>
-                                <td><?= ucwords($siswa['tempat_lahir']); ?></td>
-                            </tr>
-                            <tr>
-                                <td>Tanggal Lahir</td>
-                                <td><?= $siswa['tgl_lahir']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Agama</td>
-                                <td><?= ucwords($siswa['agama']); ?></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td><?= ucwords($siswa['alamat']); ?></td>
-                            </tr>
-                            <tr>
                                 <td>Kelas</td>
                                 <td><?= $siswa['kelas']; ?></td>
                             </tr>
@@ -45,10 +29,6 @@
                             <tr>
                                 <td>IPA</td>
                                 <td><?= $siswa['ipa']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Jenis Kelamin</td>
-                                <td><?= $siswa['jk'] == "l" ? "Laki-Laki" : "Perempuan"; ?></td>
                             </tr>
                             <tr>
                                 <td>Gambar</td>

@@ -9,8 +9,9 @@
                     <div class="col-lg-11">
 
                         <form action="" method="post">
+                            <?= form_open_multipart('nilai/ubah_nilai'); ?>
                             <div class="form-group row">
-                                <label for="indonesia" class="col-sm-2 col-form-label">Bahasa Indonesia</label>
+                                <label for="indonesia" class="col-sm-3 col-form-label">Bahasa Indonesia</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="indonesia" value="<?= $siswa['indonesia']; ?>" placeholder="Ketik nilai. . .">
                                     <?= form_error('indonesia', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -18,7 +19,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="matematika" class="col-sm-2 col-form-label">Matematika</label>
+                                <label for="matematika" class="col-sm-3 col-form-label">Matematika</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="matematika" value="<?= $siswa['matematika']; ?>" placeholder="Ketik nilai. . .">
                                     <?= form_error('matematika', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -26,7 +27,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="ipa" class="col-sm-2 col-form-label">IPA</label>
+                                <label for="ipa" class="col-sm-3 col-form-label">IPA</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="ipa" value="<?= $siswa['ipa']; ?>" placeholder="Ketik nilai. . .">
                                     <?= form_error('ipa', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -34,7 +35,7 @@
                             </div>
 
                             <div class="form-group row justify-content-end">
-                                <div class="col-sm-10">
+                                <div class="col-sm-9">
                                     <button type="submit" class="btn btn-primary pl-4 pr-4 mr-3">
                                         <i class="fas fa-edit"></i> Ubah
                                     </button>
