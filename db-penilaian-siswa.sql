@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 15, 2019 at 02:27 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Host: 127.0.0.1
+-- Generation Time: Dec 15, 2019 at 08:19 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,7 +39,12 @@ CREATE TABLE `detail_nilai` (
 --
 
 INSERT INTO `detail_nilai` (`id_nilai`, `kode_mapel`, `nilai`) VALUES
-(1, '00001', 0);
+(2, '00001', 90),
+(2, '00002', 80),
+(2, '00003', 85),
+(3, '00001', 75),
+(3, '00002', 98),
+(3, '00003', 98);
 
 -- --------------------------------------------------------
 
@@ -99,6 +104,18 @@ CREATE TABLE `kelas_siswa` (
   `nisn` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kelas_siswa`
+--
+
+INSERT INTO `kelas_siswa` (`id`, `id_kelas`, `nisn`) VALUES
+(1, 1, '9993372001'),
+(2, 1, '9993372002'),
+(3, 2, '9993372003'),
+(4, 2, '9993372004'),
+(5, 3, '9993372005'),
+(6, 3, '9993372007');
+
 -- --------------------------------------------------------
 
 --
@@ -115,7 +132,9 @@ CREATE TABLE `mata_pelajaran` (
 --
 
 INSERT INTO `mata_pelajaran` (`kode_mapel`, `nama_mapel`) VALUES
-('00001', 'Bahasa Indonesia');
+('00001', 'Bahasa Indonesia'),
+('00002', 'Matematika'),
+('00003', 'IPA');
 
 -- --------------------------------------------------------
 
@@ -127,6 +146,14 @@ CREATE TABLE `nilai` (
   `id_nilai` int(6) NOT NULL,
   `nisn` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nilai`
+--
+
+INSERT INTO `nilai` (`id_nilai`, `nisn`) VALUES
+(2, '9993372001'),
+(3, '9993372002');
 
 -- --------------------------------------------------------
 
@@ -187,10 +214,10 @@ INSERT INTO `user` (`id`, `nama`, `email`, `gambar`, `password`, `role_id`, `is_
 (6, 'surya intan permana', 'admin@admin.com', 'pro1576102509.jpg', '$2y$10$vH1e7Tu8xcGcXsXPsxH8JugMpEpnsfS93xs/zlKt2/YYvB/OQ4tem', 1, 1, 1575686859),
 (11, 'ahmad maulana', 'ahmadmaulana@gmail.com', 'default.jpg', '$2y$10$K4hZxa8Jzp48DK5JcZU/wOcDOofBLsk96yQZNNwG/PLrBwNwtlKEy', 2, 1, 1576105567),
 (12, 'eka wardana', 'ekawardana@gmail.com', 'default.jpg', '$2y$10$QRV1Ac2baCeJ0YQcjD4Zn.K9y/pO/rROqK8bAqZtN82lIjhs.yYpm', 3, 1, 1576105603),
-(13, 'agil maulid', 'agilmaulid@gmail.com', '', '$2y$10$MC/uc/QNHoFYhooyH2CVhu27LQKrdHwmGXYnupE44/e76M1ixQ6pO', 2, 1, 1576373076),
-(14, 'muhammad hilmi', 'mhilmi@gmail.com', '', '$2y$10$O7sHMcW7A.eZOJvY5m6dme9oxL44PhyLLD3vLatJPz13ZxSybWWMS', 2, 1, 1576373170),
-(15, 'rizqi awalullah', 'rizqiawal@gmail.com', '', '$2y$10$TKBqMyaOUk16rUxQp9tiU.VoqmNY1HNC81YFmysgn3Xy59mFLkPay', 2, 1, 1576373190),
-(16, 'sri hartini rizkia', 'srihartini@gmail.com', '', '$2y$10$aEi4.rbRjog5SS6o7GvA5eXh8c3HBTpaxloqUN0ltMvmp9H7ELNdu', 2, 1, 1576373225);
+(13, 'agil maulid', 'agilmaulid@gmail.com', 'default.jpg', '$2y$10$MC/uc/QNHoFYhooyH2CVhu27LQKrdHwmGXYnupE44/e76M1ixQ6pO', 2, 1, 1576373076),
+(14, 'muhammad hilmi', 'mhilmi@gmail.com', 'default.jpg', '$2y$10$O7sHMcW7A.eZOJvY5m6dme9oxL44PhyLLD3vLatJPz13ZxSybWWMS', 2, 1, 1576373170),
+(15, 'rizqi awalullah', 'rizqiawal@gmail.com', 'default.jpg', '$2y$10$TKBqMyaOUk16rUxQp9tiU.VoqmNY1HNC81YFmysgn3Xy59mFLkPay', 2, 1, 1576373190),
+(16, 'sri hartini rizkia', 'srihartini@gmail.com', 'default.jpg', '$2y$10$aEi4.rbRjog5SS6o7GvA5eXh8c3HBTpaxloqUN0ltMvmp9H7ELNdu', 2, 1, 1576373225);
 
 -- --------------------------------------------------------
 
@@ -291,13 +318,13 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT for table `kelas_siswa`
 --
 ALTER TABLE `kelas_siswa`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id_nilai` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_nilai` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

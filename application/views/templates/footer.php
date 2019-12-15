@@ -94,7 +94,7 @@
                          return s.charAt(0).toUpperCase() + s.slice(1)
                     }
 
-
+                    //mengubah format string pada tgl agar menjadi format dd-mm-yyyy
                     const format = (s) => {
                          if (typeof s !== 'string') return ''
                          let tahun = s.substring(0, 4)
