@@ -3,25 +3,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class ModelNilai extends CI_Model
 {
-
-    public function getData()
+    public function getUsers($limit, $start)
     {
-        $query = "SELECT * FROM `siswa` 
-                    JOIN        `kelas_siswa` 
-                    ON          `siswa`.`nisn` = `kelas_siswa`.`nisn`
-                    JOIN        `kelas`
-                    ON          `kelas_siswa`.`id_kelas` = `kelas`.`id_kelas`
-                    ORDER BY    `kelas`.`nama_kelas` 
-                    ASC";
+        return $this->db->get('siswa', $limit, $start)->result_array();
+    }
 
-        $query2 = "SELECT * FROM `siswa`
-                    JOIN `nilai`
-                    ON `siswa`.`nisn` = `nilai`.`nisn`
-                    JOIN `detail_nilai`  
-                    ON `nilai`.`id_nilai` = `detail_nilai`.`id_nilai`
-                    ORDER BY `siswa`.`nisn`
-                    ASC";
+    public function getSiswaById($nisn)
+    {
+        return $this->db->get_where('siswa', ['nisn' => $nisn])->row_array();
+    }
 
-        return $this->db->query($query2);
+    public function ubahNilai($nisn)
+    {
+        $data = [
+            'indonesia' => $this->input->post('indonesia', true),
+            'matematika' => $this->input->post('matematika', true),
+            'ipa' => $this->input->post('ipa', true),
+        ];
+
+        $this->db->where('nisn', $this->input->post('nisn'));
+        $this->db->update('siswa', $data);
     }
 }

@@ -3,9 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Nilai extends CI_Controller
 {
-    public function index()
-    { }
-
     public function data_nilai()
     {
         $data['user']  = $this->ModelUser->getTopbarName();
@@ -53,5 +50,56 @@ class Nilai extends CI_Controller
         $this->load->view('templates/topbar');
         $this->load->view('siswa/v-nilai-siswa', $user);
         $this->load->view('templates/footer');
+    }
+
+    public function detail_nilai($nisn)
+    {
+        $data['title'] = "Detail Nilai Siswa";
+        $data['user']  = $this->ModelUser->getTopbarName();
+        $detail['siswa']  = $this->ModelNilai->getSiswaById($nisn);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/admin_sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('siswa/v-detail-nilai', $detail);
+        $this->load->view('templates/footer');
+    }
+
+    public function ubah_nilai($nisn)
+    {
+        $data['title'] = "Ubah Siswa";
+        $data['user']  = $this->ModelAdmin->getTopbarName();
+        $data['siswa'] = $this->ModelNilai->getSiswaById($nisn);
+
+        $this->form_validation->set_rules('indonesia', 'Bahasa Indonesia', 'required|numeric', [
+            'required' => 'Nilai harus diisi !',
+            'numeric' => 'Harus angka!'
+        ]);
+        $this->form_validation->set_rules('matematika', 'Matematika', 'required|numeric', [
+            'required' => 'Nilai harus diisi !',
+            'numeric' => 'Harus angka!'
+        ]);
+        $this->form_validation->set_rules('ipa', 'IPA', 'required|numeric', [
+            'required' => 'Nilai harus diisi !',
+            'numeric' => 'Harus angka!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/admin_sidebar', $data);
+            $this->load->view('templates/topbar');
+            $this->load->view('siswa/v-ubah-nilai', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'indonesia' => $this->input->post('indonesia', true),
+                'matematika' => $this->input->post('matematika', true),
+                'ipa' => $this->input->post('ipa', true),
+            ];
+
+            $this->ModelNilai->ubahNilai($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Nilai Berhasil diubah!</div>');
+            redirect('nilai/data_nilai');
+        }
     }
 }

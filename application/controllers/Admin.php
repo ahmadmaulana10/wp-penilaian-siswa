@@ -410,7 +410,7 @@ class Admin extends CI_Controller
           ]);
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar', $data);
+               $this->load->view('templates/admin_sidebar', $data);
                $this->load->view('templates/topbar');
                $this->load->view('siswa/v-ubah-siswa', $data);
                $this->load->view('templates/footer');

@@ -13,9 +13,9 @@ class ModelSiswa extends CI_Model
         return $this->db->get('siswa')->num_rows();
     }
 
-    public function getUsers()
+    public function getUsers($limit, $start)
     {
-        return $this->db->get('siswa')->result_array();
+        return $this->db->get('siswa', $limit, $start)->result_array();
     }
 
     public function ubahSiswa()

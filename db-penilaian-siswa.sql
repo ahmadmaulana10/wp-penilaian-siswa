@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 15, 2019 at 08:19 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.1.32
+-- Host: localhost
+-- Generation Time: Dec 15, 2019 at 12:30 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,30 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db-penilaian-siswa`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `detail_nilai`
---
-
-CREATE TABLE `detail_nilai` (
-  `id_nilai` int(6) NOT NULL,
-  `kode_mapel` char(5) NOT NULL,
-  `nilai` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `detail_nilai`
---
-
-INSERT INTO `detail_nilai` (`id_nilai`, `kode_mapel`, `nilai`) VALUES
-(2, '00001', 90),
-(2, '00002', 80),
-(2, '00003', 85),
-(3, '00001', 75),
-(3, '00002', 98),
-(3, '00003', 98);
 
 -- --------------------------------------------------------
 
@@ -95,30 +71,6 @@ INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `ket`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelas_siswa`
---
-
-CREATE TABLE `kelas_siswa` (
-  `id` int(5) NOT NULL,
-  `id_kelas` int(5) NOT NULL,
-  `nisn` char(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `kelas_siswa`
---
-
-INSERT INTO `kelas_siswa` (`id`, `id_kelas`, `nisn`) VALUES
-(1, 1, '9993372001'),
-(2, 1, '9993372002'),
-(3, 2, '9993372003'),
-(4, 2, '9993372004'),
-(5, 3, '9993372005'),
-(6, 3, '9993372007');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `mata_pelajaran`
 --
 
@@ -139,25 +91,6 @@ INSERT INTO `mata_pelajaran` (`kode_mapel`, `nama_mapel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nilai`
---
-
-CREATE TABLE `nilai` (
-  `id_nilai` int(6) NOT NULL,
-  `nisn` char(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `nilai`
---
-
-INSERT INTO `nilai` (`id_nilai`, `nisn`) VALUES
-(2, '9993372001'),
-(3, '9993372002');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `siswa`
 --
 
@@ -168,6 +101,10 @@ CREATE TABLE `siswa` (
   `tgl_lahir` date NOT NULL,
   `agama` varchar(15) NOT NULL,
   `alamat` varchar(50) NOT NULL,
+  `kelas` varchar(10) NOT NULL,
+  `indonesia` int(100) NOT NULL,
+  `matematika` int(100) NOT NULL,
+  `ipa` int(100) NOT NULL,
   `jk` varchar(1) NOT NULL,
   `gambar` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -176,18 +113,18 @@ CREATE TABLE `siswa` (
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`nisn`, `nama_siswa`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `jk`, `gambar`) VALUES
-('9993372001', 'hansen', 'bogor', '2009-12-01', 'konghucu', 'rancabungur', 'l', 'default.jpg'),
-('9993372002', 'ahmad', 'bogor', '2000-12-05', 'islam', 'ciomas', 'l', 'default.jpg'),
-('9993372003', 'tias', 'palembang', '1999-12-19', 'islam', 'ciwaringin', 'p', 'default.jpg'),
-('9993372004', 'budi', 'bogor', '1986-10-05', 'islam', 'dramaga', 'l', 'default.jpg'),
-('9993372005', 'nia', 'bandung', '2001-01-19', 'islam', 'ciawi', 'p', 'default.jpg'),
-('9993372007', 'maulana', 'jakarta', '1999-12-12', 'islam', 'ciapus', 'l', 'default.jpg'),
-('9993372008', 'toni', 'jogjakarta', '1999-10-10', 'kristen', 'ciampea', 'l', 'default.jpg'),
-('9993372009', 'tasya', 'surabaya', '1998-10-09', 'kristen', 'cibinong', 'p', 'default.jpg'),
-('9993372010', 'komarudin', 'bandung', '1988-10-09', 'islam', 'cikoneng', 'l', 'default.jpg'),
-('9999999998', 'John Doe', 'Kansas', '1999-12-14', 'kristen', 'Ciomas', 'l', ''),
-('9999999999', 'Ahmad John', 'Bogor', '1998-12-14', 'islam', 'bojong sari', 'l', '');
+INSERT INTO `siswa` (`nisn`, `nama_siswa`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `kelas`, `indonesia`, `matematika`, `ipa`, `jk`, `gambar`) VALUES
+('9993372001', 'hansen', 'bogor', '2009-12-01', 'konghucu', 'rancabungur', 'I', 90, 85, 80, 'l', 'default.jpg'),
+('9993372002', 'ahmad', 'bogor', '2000-12-05', 'islam', 'ciomas', 'I', 85, 80, 60, 'l', 'default.jpg'),
+('9993372003', 'tias', 'palembang', '1999-12-19', 'islam', 'ciwaringin', 'II', 90, 75, 85, 'p', 'default.jpg'),
+('9993372004', 'budi', 'bogor', '1986-10-05', 'islam', 'dramaga', 'II', 100, 100, 90, 'l', 'default.jpg'),
+('9993372005', 'nia', 'bandung', '2001-01-19', 'islam', 'ciawi', 'III', 70, 90, 85, 'p', 'default.jpg'),
+('9993372007', 'maulana', 'jakarta', '1999-12-12', 'islam', 'ciapus', 'III', 75, 40, 90, 'l', 'default.jpg'),
+('9993372008', 'toni', 'jogjakarta', '1999-10-10', 'kristen', 'ciampea', 'IV', 80, 70, 85, 'l', 'default.jpg'),
+('9993372009', 'tasya', 'surabaya', '1998-10-09', 'kristen', 'cibinong', 'IV', 60, 60, 85, 'p', 'default.jpg'),
+('9993372010', 'komarudin', 'bandung', '1988-10-09', 'islam', 'cikoneng', 'V', 70, 80, 75, 'l', 'default.jpg'),
+('9999999998', 'John Doe', 'Kansas', '1999-12-14', 'kristen', 'Ciomas', 'V', 90, 85, 90, 'l', 'default.jpg'),
+('9999999999', 'Ahmad John', 'Bogor', '1998-12-14', 'islam', 'bojong sari', 'VI', 90, 60, 80, 'l', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -248,12 +185,6 @@ INSERT INTO `user_token` (`id`, `email`, `token`, `tanggal_buat`) VALUES
 --
 
 --
--- Indexes for table `detail_nilai`
---
-ALTER TABLE `detail_nilai`
-  ADD KEY `kode_mapel` (`kode_mapel`);
-
---
 -- Indexes for table `guru`
 --
 ALTER TABLE `guru`
@@ -266,25 +197,10 @@ ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indexes for table `kelas_siswa`
---
-ALTER TABLE `kelas_siswa`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_kelas` (`id_kelas`),
-  ADD KEY `nisn` (`nisn`);
-
---
 -- Indexes for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
   ADD PRIMARY KEY (`kode_mapel`);
-
---
--- Indexes for table `nilai`
---
-ALTER TABLE `nilai`
-  ADD PRIMARY KEY (`id_nilai`),
-  ADD KEY `nisn` (`nisn`);
 
 --
 -- Indexes for table `siswa`
@@ -315,18 +231,6 @@ ALTER TABLE `kelas`
   MODIFY `id_kelas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `kelas_siswa`
---
-ALTER TABLE `kelas_siswa`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `nilai`
---
-ALTER TABLE `nilai`
-  MODIFY `id_nilai` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
@@ -337,29 +241,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_token`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `detail_nilai`
---
-ALTER TABLE `detail_nilai`
-  ADD CONSTRAINT `detail_nilai_ibfk_1` FOREIGN KEY (`kode_mapel`) REFERENCES `mata_pelajaran` (`kode_mapel`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `kelas_siswa`
---
-ALTER TABLE `kelas_siswa`
-  ADD CONSTRAINT `kelas_siswa_ibfk_1` FOREIGN KEY (`nisn`) REFERENCES `siswa` (`nisn`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `kelas_siswa_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `nilai`
---
-ALTER TABLE `nilai`
-  ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`nisn`) REFERENCES `siswa` (`nisn`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
