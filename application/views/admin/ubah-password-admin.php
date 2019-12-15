@@ -8,7 +8,7 @@
                <div class="row">
                     <div class="col-lg-6">
                          <?= $this->session->flashdata('message'); ?>
-                         <form action="<?= base_url('user/ubahPassword'); ?>" method="post">
+                         <form action="<?= base_url('admin/ubahPassword'); ?>" method="post">
                               <div class="form-group">
                                    <label for="passwordlama">Password lama</label>
                                    <input type="password" class="form-control" id="passwordlama" name="passwordlama">

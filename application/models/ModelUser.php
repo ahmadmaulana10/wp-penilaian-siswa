@@ -13,6 +13,11 @@ class ModelUser extends CI_Model
           return $this->db->get_where('user', ['id' => $id])->row_array();
      }
 
+     public function getUserWhere($where = null)
+     {
+          return $this->db->get_where('user', $where);
+     }
+
      public function ubahUser()
      {
           $data = [
@@ -50,7 +55,6 @@ class ModelUser extends CI_Model
      {
           return $this->db->get('user')->num_rows();
      }
-
 
      public function getUserByEmail($email)
      {

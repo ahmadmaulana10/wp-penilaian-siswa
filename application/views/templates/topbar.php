@@ -49,12 +49,12 @@
                                                        <span class="email"><?= $user['email']; ?></span>
                                                   </div>
                                              </div>
-                                             <div class="account-dropdown__body">
+                                             <!-- <div class="account-dropdown__body">
                                                   <div class="account-dropdown__item">
                                                        <a href="<?= base_url('admin/ubah_profil'); ?>">
                                                             <i class="fas fa-fw fa-user"></i>Ubah Profil</a>
                                                   </div>
-                                             </div>
+                                             </div> -->
                                              <div class="account-dropdown__footer">
                                                   <a href="<?= base_url('auth/logout'); ?>" onclick="return confirm('Pilih OK jika ingin keluar dari aplikasi.'); ">
                                                        <i class="fas fa-fw fa-sign-out-alt"></i>Logout</a>

@@ -28,6 +28,10 @@
                          <hr>
 
                          <li>
+                              <a href="<?= base_url('user/ubah_profil'); ?>">
+                                   <i class="fas fa-fw fa-user"></i>Ubah Profil</a>
+                         </li>
+                         <li>
                               <a href="<?= base_url('user/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>
                          </li>
@@ -67,6 +71,10 @@
 
                          <hr>
 
+                         <li>
+                              <a href="<?= base_url('user/ubah_profil'); ?>">
+                                   <i class="fas fa-fw fa-user"></i>Ubah Profil</a>
+                         </li>
                          <li>
                               <a href="<?= base_url('user/ubahPassword'); ?>">
                                    <i class="fas fa-fw fa-gears"></i>Ubah Password</a>

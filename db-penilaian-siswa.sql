@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 14, 2019 at 09:55 AM
+-- Generation Time: Dec 15, 2019 at 02:27 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -128,13 +128,6 @@ CREATE TABLE `nilai` (
   `nisn` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `nilai`
---
-
-INSERT INTO `nilai` (`id_nilai`, `nisn`) VALUES
-(1, '9993372001');
-
 -- --------------------------------------------------------
 
 --
@@ -191,9 +184,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama`, `email`, `gambar`, `password`, `role_id`, `is_active`, `tanggal_buat`) VALUES
-(6, 'surya intan permana', 'admin@admin.com', 'pro1576102509.jpg', '$2y$10$7PJqiyR4CcwGPT7AYcq4i.iPGG5l6.TJdNKft7zFvyp69KSMkDDpW', 1, 1, 1575686859),
-(11, 'ahmad maulana', 'ahmadmaulana@gmail.com', 'default.jpg', '$2y$10$jEzz1uXE1tTcGEtvsBglAuhjae0kpaCKN9y7kHFMg02sPXzdQ4Poi', 2, 1, 1576105567),
-(12, 'eka wardana', 'ekawardana@gmail.com', 'default.jpg', '$2y$10$1ZH/hcl3i99v3iqraDIOdeHTacBm4tWbtxIExycFdkmNkz8WC7Fv6', 3, 1, 1576105603);
+(6, 'surya intan permana', 'admin@admin.com', 'pro1576102509.jpg', '$2y$10$vH1e7Tu8xcGcXsXPsxH8JugMpEpnsfS93xs/zlKt2/YYvB/OQ4tem', 1, 1, 1575686859),
+(11, 'ahmad maulana', 'ahmadmaulana@gmail.com', 'default.jpg', '$2y$10$K4hZxa8Jzp48DK5JcZU/wOcDOofBLsk96yQZNNwG/PLrBwNwtlKEy', 2, 1, 1576105567),
+(12, 'eka wardana', 'ekawardana@gmail.com', 'default.jpg', '$2y$10$QRV1Ac2baCeJ0YQcjD4Zn.K9y/pO/rROqK8bAqZtN82lIjhs.yYpm', 3, 1, 1576105603),
+(13, 'agil maulid', 'agilmaulid@gmail.com', '', '$2y$10$MC/uc/QNHoFYhooyH2CVhu27LQKrdHwmGXYnupE44/e76M1ixQ6pO', 2, 1, 1576373076),
+(14, 'muhammad hilmi', 'mhilmi@gmail.com', '', '$2y$10$O7sHMcW7A.eZOJvY5m6dme9oxL44PhyLLD3vLatJPz13ZxSybWWMS', 2, 1, 1576373170),
+(15, 'rizqi awalullah', 'rizqiawal@gmail.com', '', '$2y$10$TKBqMyaOUk16rUxQp9tiU.VoqmNY1HNC81YFmysgn3Xy59mFLkPay', 2, 1, 1576373190),
+(16, 'sri hartini rizkia', 'srihartini@gmail.com', '', '$2y$10$aEi4.rbRjog5SS6o7GvA5eXh8c3HBTpaxloqUN0ltMvmp9H7ELNdu', 2, 1, 1576373225);
 
 -- --------------------------------------------------------
 
@@ -306,7 +303,7 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user_token`

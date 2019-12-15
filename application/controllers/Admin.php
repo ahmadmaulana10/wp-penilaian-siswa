@@ -43,7 +43,7 @@ class Admin extends CI_Controller
 
           if ($this->form_validation->run() == false) {
                $this->load->view('templates/header', $data);
-               $this->load->view('templates/sidebar');
+               $this->load->view('templates/admin_sidebar');
                $this->load->view('templates/topbar', $data);
                $this->load->view('admin/ubah-profil', $data);
                $this->load->view('templates/footer');
@@ -115,11 +115,11 @@ class Admin extends CI_Controller
 
                if (!password_verify($passlama, $data['user']['password'])) {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password lama salah!</div>');
-                    redirect('user/ubahPassword');
+                    redirect('admin/ubahPassword');
                } else {
                     if ($passlama == $passbaru) {
                          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password tidak boleh sama!</div>');
-                         redirect('user/ubahPassword');
+                         redirect('admin/ubahPassword');
                     } else {
                          // Password ok
                          $passhash = password_hash($passbaru, PASSWORD_DEFAULT);
@@ -129,7 +129,7 @@ class Admin extends CI_Controller
                          $this->db->update('user');
 
                          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah!</div>');
-                         redirect('user/ubahPassword');
+                         redirect('admin/ubahPassword');
                     }
                }
           }
@@ -187,7 +187,6 @@ class Admin extends CI_Controller
                $data = [
                     'nama' => $this->input->post('nama', true),
                     'email' => $this->input->post('email', true),
-                    // 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                     'role_id' => $this->input->post('role_id', true),
                     'is_active' => $this->input->post('is_active', true),
                     'gambar' => $upload_gambar
@@ -439,17 +438,11 @@ class Admin extends CI_Controller
           }
      }
 
-     public function ubah_siswa($nisn = 'nisn')
+     public function ubah_siswa($nisn)
      {
           $data['title'] = "Ubah Siswa";
           $data['user']  = $this->ModelAdmin->getTopbarName();
           $data['siswa'] = $this->ModelSiswa->getSiswaById($nisn);
-
-          $this->form_validation->set_rules('nisn', 'NISN', 'required|min_length[8]|numeric', [
-               'required' => 'NISN harus diisi !',
-               'min_length' => 'NISN terlalu pendek !',
-               'numeric' => 'Harus angka !'
-          ]);
 
           $this->form_validation->set_rules('nama_siswa', 'Nama Siswa', 'required|min_length[3]', [
                'required' => 'Nama siswa harus diisi !',
@@ -480,28 +473,8 @@ class Admin extends CI_Controller
                $this->load->view('siswa/v-ubah-siswa', $data);
                $this->load->view('templates/footer');
           } else {
-               // $upload_gambar = $_FILES['gambar']['nama'];
-               // if ($upload_gambar) {
-               //      $config['upload_path'] = './assets/img/profile/';
-               //      $config['allowed_types'] = 'gif|jpg|png';
-               //      $config['max_size'] = '3000';
-               //      $config['max_width'] = '1024';
-               //      $config['max_height'] = '1000';
-               //      $config['file_name'] = 'pro' . time();
-               //      $this->load->library('upload', $config);
-               //      if ($this->upload->do_upload('gambar')) {
-               //           $gambar_lama = $data['user']['gambar'];
-               //           if ($gambar_lama != 'default.jpg') {
-               //                unlink(FCPATH . 'assets/img/profile/' . $gambar_lama);
-               //           }
-               //           $gambar_baru = $this->upload->data('file_name');
-               //           $this->db->set('gambar', $gambar_baru);
-               //      } else {
-               //           echo $this->upload->display_errors();
-               //      }
-               // }
                $data = [
-                    'nisn' => $this->input->post('nisn', true),
+                    // 'nisn' => $this->input->post('nisn', true),
                     'nama_siswa' => $this->input->post('nama_siswa', true),
                     'tempat_lahir' => $this->input->post('tempat_lahir', true),
                     'tgl_lahir' => $this->input->post('tgl_lahir', true),
@@ -511,7 +484,7 @@ class Admin extends CI_Controller
 
                ];
 
-               $this->ModelSiswa->updateSiswa($data);
+               $this->ModelSiswa->ubahSiswa($data);
                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diubah!</div>');
                redirect('admin/data_siswa');
           }
