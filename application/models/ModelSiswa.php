@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class ModelSiswa extends CI_Model
 {
-
     public function getSiswaById($nisn)
     {
         return $this->db->get_where('siswa', ['nisn' => $nisn])->row_array();
@@ -14,9 +13,9 @@ class ModelSiswa extends CI_Model
         return $this->db->get('siswa')->num_rows();
     }
 
-    public function getUsers($limit, $start)
+    public function getUsers()
     {
-        return $this->db->get('siswa', $limit, $start)->result_array();
+        return $this->db->get('siswa')->result_array();
     }
 
     public function ubahSiswa()
